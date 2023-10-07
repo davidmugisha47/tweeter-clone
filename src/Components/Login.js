@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../Contexts/UserContext";
-import "./Login.css";
+import "../Styles/Login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -94,7 +94,7 @@ const Login = () => {
           <button>Forgot password?</button>
         </div>
         <div className="qwn">
-          <p>Don't have an account? <a href="Sign up">Sign up</a></p>
+          <p>Don't have an account? <a href="Signup">Sign up</a></p>
         </div>
       </div>
     </div>

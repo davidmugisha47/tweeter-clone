@@ -100,6 +100,12 @@ body {
     width: 360px;
   }
 
+  .button3 a{
+    text-decoration: none;
+    color: white;
+    background: transparent;
+  }
+
   .stext {
     font-size: 0.8em;
     font-weight: lighter;

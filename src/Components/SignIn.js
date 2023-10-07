@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import "./SignIn.css";
+import "../Styles/SignIn.css";
 
 const SignIn = () => {
 
@@ -51,7 +51,7 @@ const SignIn = () => {
                 <span><hr style={{ maxWidth: "150px" }}/><p>Or</p><hr style={{ maxWidth: "150px" }}/></span>
             </div>
             <div className="button3">
-                <button>Create account</button>
+                <button><a href="signup">Create account</a></button>
                 <p className="stext">By signing up, you agree to the Terms of Service and Privacy Policy,<br/> including Cookie Use.</p>
             </div>
             <div className="question">
