@@ -1,4 +1,5 @@
 import React from "react";
+import TweetContext from "../Contexts/TweetContext";
 import { Container, Row, Col, Stack, Card } from "react-bootstrap";
 
 const HomePage = () => {
