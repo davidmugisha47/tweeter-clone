@@ -1,17 +1,18 @@
 import React from 'react';
+import SignIn from './Components/SignIn';
+import { UserProvider } from './Contexts/UserProvider';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={ <SignIn /> } />
+          <Route path="/signin" element={ <SignIn /> } />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
