@@ -10,13 +10,13 @@ body {
 }
 
 .xlogo {
-    margin-top: 200px;
+    margin-top: 180px;
     text-align: center;
 }
 
 .text {
-    margin-top: 120px;
     margin-left: 20px;
+    margin-top: 100px;
 }
 
 .hdng {
@@ -29,39 +29,40 @@ body {
 .join {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
-    margin-top: 40px;
+    margin-top: 30px;
     font-weight: bolder;
     color: rgb(237, 247, 255);
 }
 
 .buttons {
-    margin-left: 20px;
+    margin-right: 150px;
 }
 
 .buttons button{
     background-color: white;
     color: black;
-    padding: 2px 90px;
     border-radius: 40px;
     border: 2px solid white;
+    height: 38px;
+    width: 360px;
 }
 
 .button2 {
-    margin-left: 20px;
+    margin-right: 150px;
     margin-top: 10px;
 }
 
 .button2 button {
     background-color: white;
     color: black;
-    padding: 2px 85px;
     border-radius: 40px;
     border: 2px solid white;
+    height: 38px;
+    width: 360px;
 }
 .or {
     text-align: center;
-    margin-left: 15px;  
-    margin-right: 348px;
+    margin-right: 150px;  
     margin-top: 10px;
   }
   
@@ -85,17 +86,18 @@ body {
   }
 
   .button3 {
-    margin-left: 20px;
+    margin-right: 150px;
     margin-top: 10px;
   }
   
   .button3 button {
     background-color: rgb(16, 143, 255);
     color: white;
-    padding: 6px 125px;
     border-radius: 40px;
     border: 2px solid black;
     font-weight: 500;
+    height: 38px;
+    width: 360px;
   }
 
   .stext {
@@ -104,8 +106,8 @@ body {
   }
 
   .question {
-    margin-left: 20px;
-    margin-top: 70px;
+    margin-right: 300px;
+    margin-bottom: 20px;
   }
 
   .question p {
@@ -114,18 +116,23 @@ body {
   }
 
   .button4 {
-    margin-left: 20px;
-    margin-top: 10px;
+    margin-right: 150px;;
+    margin-top: 2px;
   }
 
   .button4 button {
     background-color: transparent;
-    color: rgb(16, 143, 255);
-    padding: 6px 125px;
     border-radius: 40px;
     border: 1px solid rgba(240, 248, 255, 0.533);
     font-weight: 500;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 38px;
+    width: 360px;
+  }
+
+  .button4 button a {
+    text-decoration: none;
+    color: rgb(16, 143, 255);
   }
 
   .footer {
@@ -137,8 +144,7 @@ body {
     font-size: 0.7em;
     padding: 10px 13px;
     margin-left: 2px;
-    margin-top: 37px;
-    margin-bottom: 0;
+    margin-top: 80px;
     font-weight: lighter;
     color: rgba(240, 248, 255, 0.718);
   }

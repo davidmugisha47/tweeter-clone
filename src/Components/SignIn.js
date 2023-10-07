@@ -1,31 +1,12 @@
-import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import UserContext from "../Contexts/UserContext";
+import React from "react";
 import { Col, Row } from "react-bootstrap";
 import "./SignIn.css";
 
 const SignIn = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  let { signInUser } = useContext(UserContext);
-  let navigate = useNavigate();
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    signInUser(username, password)
-      .then(() => {
-        navigate("/twitter");
-      })
-      .catch((error) => {
-        console.log(error);
-        window.alert("Failed login");
-      });
-  }
 
   return (
-    <>
-      <Row>
+    <div>
+        <Row>
         <Col>
           <div className="xlogo">
             <img
@@ -46,7 +27,7 @@ const SignIn = () => {
               <button>
                 <span>
                   <img
-                    src="https://banner2.cleanpng.com/20180416/ppe/kisspng-g-suite-pearl-river-middle-school-google-docs-soft-google-plus-5ad4f155b36555.6827254815239048537348.jpg"
+                    src="https://banner2.cleanpng.com/20180416/ppe/kisspng-g-suite-pearl-river-middle-school-google-docs-soft-google-plus-5ad4f155b36555.6827254815239048537348.jpg" alt="logo"
                     width="28px"
                     height="28px"
                   ></img>
@@ -58,7 +39,7 @@ const SignIn = () => {
             <button>
                 <span>
                   <img
-                    src="https://media.designrush.com/inspiration_images/134802/conversions/_1511456315_653_apple-preview.jpg"
+                    src="https://media.designrush.com/inspiration_images/134802/conversions/_1511456315_653_apple-preview.jpg" alt="logo"
                     width="50px"
                     height="30px"
                   ></img>
@@ -67,7 +48,7 @@ const SignIn = () => {
               </button>
             </div>
             <div className="or">
-                <span><hr/><p>Or</p><hr/></span>
+                <span><hr style={{ maxWidth: "150px" }}/><p>Or</p><hr style={{ maxWidth: "150px" }}/></span>
             </div>
             <div className="button3">
                 <button>Create account</button>
@@ -77,7 +58,7 @@ const SignIn = () => {
                 <p>Already have an account?</p>
             </div>
             <div className="button4">
-                <button>Sign in</button>
+                <button><a href="login">Sign in</a></button>
             </div>
           </div>
         </Col>
@@ -101,10 +82,10 @@ const SignIn = () => {
         <p>Developers</p>
         <p>Directory</p>
         <p>Settings</p>
-        <p>&copy;2023 David's Clone</p>
+        <p>&copy; 2023 David's Clone</p>
       </div>
       </Row>
-    </>
+    </div>
   );
 };
 

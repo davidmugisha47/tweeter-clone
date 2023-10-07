@@ -20,7 +20,7 @@ export const UserProvider = (props) => {
 
         return axios.post(`${baseUrl}/login`, user)
             .then(response => {
-                localStorage.setItem('myCoffeeToken', response.data.token)
+                localStorage.setItem('mytweeterToken', response.data.token)
                 return new Promise(resolve => resolve(response.data));
             }
         );

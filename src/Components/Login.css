@@ -1,0 +1,126 @@
+
+.container {
+    max-width: 250px;
+    display: grid;
+    place-items: center; 
+}
+
+.frstP h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.buttonOne {
+    margin-left: 0px;
+}
+
+.buttonOne button{
+    background-color: white;
+    color: black;
+    border-radius: 40px;
+    border: 2px solid white;
+    height: 40px;
+    width: 300px;
+}
+
+.buttonTwo {
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+.buttonTwo button {
+    background-color: white;
+    color: black;
+    border-radius: 40px;
+    border: 2px solid white;
+    height: 40px;
+    width: 300px;
+}
+.oor {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .oor span {
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .oor hr {
+    flex: 1; 
+    border: none;
+    
+    border-top: 1px solid white;
+    margin: 0 10px; 
+    height: 12px;
+  }
+  
+  .or p {
+    margin: 0; 
+    font-size: 1em;
+    font-weight: lighter;
+  }
+
+
+  .inputOne {
+    background-color: black;
+    color: white;
+    border: 1px solid rgba(128, 128, 128, 0.566);
+    height: 40px;
+    width: 300px;
+  }
+
+  .inputTwo {
+    background-color: black;
+    color: white;
+    border: 1px solid rgba(128, 128, 128, 0.566);
+    height: 40px;
+    width: 300px;
+    margin-top: 15px;
+
+  }
+
+  .buttonFour button {
+    color: black;
+    background-color: whitesmoke;
+    border-radius: 40px;
+    border: 1px solid black;
+    font-weight: 500;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 38px;
+    width: 300px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .buttonFive button {
+    color: white;
+    background: transparent;
+    border-radius: 40px;
+    border: 1px solid gray;
+    font-weight: 500;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 38px;
+    width: 300px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .qwn {
+    margin-top: 40px;
+  }
+
+  .qwn a {
+    text-decoration: none;
+    color: rgb(42, 152, 248);
+  }
+
+  .cntnr {
+    margin-top: 100px;
+  }
+
+  
+
+
+  
