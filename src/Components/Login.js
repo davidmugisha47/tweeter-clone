@@ -25,7 +25,7 @@ const Login = () => {
   return (
     <div className="container">
       <div className="cntnr">
-        <div>
+        <div className="tlogo">
           <img
             src="https://www.businessofapps.com/wp-content/uploads/2023/07/twitter-x-e1690183153269.webp"
             alt="Xlogo"

@@ -5,6 +5,11 @@
     place-items: center; 
 }
 
+.tlogo {
+  display: flex;
+  justify-content: center;
+}
+
 .frstP h3 {
     margin-top: 20px;
     margin-bottom: 20px;
