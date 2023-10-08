@@ -1,0 +1,131 @@
+.logo {
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.home {
+    display: flex;
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 35px;
+}
+
+.home p {
+    margin-top: 1px;
+    margin-left: 18px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.search {
+    display: flex;
+    margin-left: 10px;
+    height: 35px;
+}
+
+.search p {
+    margin-left: 18px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.notification {
+    display: flex;
+    margin-left: 10px;
+    height: 35px;
+}
+
+.notification p {
+    margin-left: 18px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.message {
+    display: flex;
+    margin-left: 10px;
+    height: 35px;
+}
+
+.message p {
+    margin-left: 18px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.list {
+    display: flex;
+    margin-left: 10px;
+    height: 35px;
+}
+
+.list p {
+    margin-left: 18px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.communities {
+    display: flex;
+    margin-left: 10px;
+    height: 35px;
+}
+
+.communities p {
+    margin-left: 18px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.premium {
+    display: flex;
+    margin-left: 6px;
+    height: 35px;
+}
+
+.premium p {
+    margin-left: 18px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.profile {
+    display: flex;
+    margin-left: 6px;
+    height: 35px;
+}
+
+.profile p {
+    margin-left: 23px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.more {
+    display: flex;
+    margin-left: 6px;
+    height: 35px;
+}
+
+.more p {
+    margin-left: 23px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.post button {
+    background-color: rgb(16, 143, 255);
+    border-radius: 40px;
+    border: 1px solid black;
+    font-weight: 500;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 50px;
+    width: 250px;
+}
+
+.post button a {
+    background-color: transparent;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+}
