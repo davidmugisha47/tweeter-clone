@@ -77,7 +77,13 @@ const HomePage = () => {
                 <button><a href="signup">Post</a></button>
                 </div>
                 <div>
-                  {tweet.map((t)) }
+                {tweet.map((t) => {
+                            return (
+                              <di key={t.id}>
+                                {}
+                              </di>
+                            )
+                        })}
                 </div>
               </Stack>
             </Col>
