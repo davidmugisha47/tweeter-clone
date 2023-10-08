@@ -80,7 +80,7 @@ const HomePage = () => {
                 {tweet.map((t) => {
                             return (
                               <di key={t.id}>
-                                {}
+                                
                               </di>
                             )
                         })}
