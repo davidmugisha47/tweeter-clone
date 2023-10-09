@@ -4,6 +4,10 @@
     place-items: center; 
 }
 
+.log {
+    margin-top: 10px;
+}
+
 .buttonSix button{
     color: black;
     background-color: whitesmoke;
@@ -35,3 +39,40 @@
     transform: translate(-50%, -50%);
     text-align: center;
 }
+
+.userProfile {
+    display: flex;
+    margin-top: 80px;
+  }
+  
+  .rounded-image {
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    border-radius: 50%; /* Makes the image rounded */
+    margin-right: 10px; /* Adjust the margin to create space between the image and text */
+    object-fit: cover; /* Scales the image to cover the container without distortion */
+  }
+  
+
+.userName {
+    margin-left: 8px;
+    margin: 0;
+    margin-top: 4px;
+}
+
+.userName h6 {
+    font-family: sans-serif;
+    margin: 0;
+    font-weight: 500;
+}
+
+.userName p {
+    font-weight: lighter;
+}
+
+.pMenu {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+

@@ -14,16 +14,16 @@ import "../Styles/Home.css";
 const HomePage = () => {
   return (
     <>
-      <TweetContext.Consumer>
+      {/* <TweetContext.Consumer>
         {
           ({ tweet }) => {
-          return 
+          return  */}
       <div>
         <Container>
           <Row>
-            <Col md={3}>
+            {/* <Col md={3}>
               <Stack direction="vertical" gap={3}>
-                <div className="logo">
+                <div className="log">
                   <img
                     src="https://www.businessofapps.com/wp-content/uploads/2023/07/twitter-x-e1690183153269.webp"
                     alt="twitter logo"
@@ -76,28 +76,33 @@ const HomePage = () => {
                 <div className="post">
                 <button><a href="signup">Post</a></button>
                 </div>
+                <div className="userProfile">
+                  <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600" className="rounded-image"></img>
+                  <div className="userName">
+                  <h6>David Mugisha</h6>
+                  <p >@davidmugisha</p>
+                  </div>
+                  <div className="pMenu">
+                  <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                  </div>
+                </div>
+              </Stack>
+            </Col> */}
+            <Col md={6}>
+              <Stack direction="vertical" gap={3}>
                 <div>
-                {tweet.map((t) => {
-                            return (
-                              <di key={t.id}>
-                                
-                              </di>
-                            )
-                        })}
+                  
                 </div>
               </Stack>
             </Col>
-            {/* <Col md={6}>
-              <Stack direction="vertical" gap={3}></Stack>
-            </Col>
-            <Col md={3}>
+            {/* <Col md={3}>
               <Stack direction="vertical" gap={3}></Stack>
             </Col> */}
           </Row>
         </Container>
       </div>
-      }}
-      </TweetContext.Consumer>
+      {/* }}
+      </TweetContext.Consumer> */}
     </>
   );
 };
