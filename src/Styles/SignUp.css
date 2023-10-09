@@ -75,4 +75,21 @@
     margin-left: 20px;
 }
 
+.navContainer {
+    border: 1px solid grey;
+    width: 600px;
+    margin-right: 100px;
+}
+
+.navContainer h4 {
+    padding: 10px;
+}
+
+.following {
+    display: flex;
+    /* padding: 10px; */
+    justify-content: space-around;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 

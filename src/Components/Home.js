@@ -7,8 +7,8 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import GroupIcon from "@mui/icons-material/Group";
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import "../Styles/Home.css";
 
 const HomePage = () => {
@@ -21,7 +21,7 @@ const HomePage = () => {
       <div>
         <Container>
           <Row>
-            {/* <Col md={3}>
+            {/* <Col md={2}>
               <Stack direction="vertical" gap={3}>
                 <div className="log">
                   <img
@@ -91,11 +91,17 @@ const HomePage = () => {
             <Col md={6}>
               <Stack direction="vertical" gap={3}>
                 <div>
-                  
+                  <div className="navContainer">
+                    <h4>Home</h4>
+                    <div className="following">
+                      <p>For you</p>
+                      <p>Following</p>
+                    </div>
+                  </div>
                 </div>
               </Stack>
             </Col>
-            {/* <Col md={3}>
+            {/* <Col md={4}>
               <Stack direction="vertical" gap={3}></Stack>
             </Col> */}
           </Row>
