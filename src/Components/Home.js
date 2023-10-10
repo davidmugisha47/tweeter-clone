@@ -1,6 +1,14 @@
 import React from "react";
 import TweetContext from "../Contexts/TweetContext";
-import { Container, Row, Col, Stack, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Stack,
+  Card,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -15,8 +23,9 @@ import ListIcon from "@mui/icons-material/List";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import VerifiedIcon from '@mui/icons-material/Verified';
+import VerifiedIcon from "@mui/icons-material/Verified";
 import "../Styles/Home.css";
+import UserContext from "../Contexts/UserContext";
 
 const HomePage = () => {
   return (
@@ -26,7 +35,7 @@ const HomePage = () => {
           ({ tweet }) => {
           return  */}
       <div>
-        <Container >
+        <Container>
           <Row>
             <Col md={2}>
               <Stack direction="vertical" gap={3}>
@@ -102,7 +111,7 @@ const HomePage = () => {
                 </div>
               </Stack>
             </Col>
-            <Col md={8}>
+            <Col md={7}>
               <Stack direction="vertical" gap={3}>
                 <div className="middle-container">
                   <div className="navContainer">
@@ -161,11 +170,23 @@ const HomePage = () => {
                           src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
                           className="rounded-image"
                         ></img>
-                        <h6 className="tweetOwner">David Mugisha <VerifiedIcon fontSize="small"></VerifiedIcon> <p>@davidmugisha </p></h6>
+                        <h6 className="tweetOwner">
+                          David Mugisha{" "}
+                          <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
+                          <p>@davidmugisha </p>
+                        </h6>
                       </div>
                       <div className="tweetBody">
-                      <p >Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. ❤️🌟 #Success #Happiness</p>
-                      <img src="https://images.pexels.com/photos/6945/sunset-summer-golden-hour-paul-filitchkin.jpg?auto=compress&cs=tinysrgb&w=600" height= "auto" width= "520px"></img>
+                        <p>
+                          Success is not the key to happiness. Happiness is the
+                          key to success. If you love what you are doing, you
+                          will be successful. ❤️🌟 #Success #Happiness
+                        </p>
+                        <img
+                          src="https://images.pexels.com/photos/6945/sunset-summer-golden-hour-paul-filitchkin.jpg?auto=compress&cs=tinysrgb&w=600"
+                          height="auto"
+                          width="520px"
+                        ></img>
                       </div>
                     </div>
                   </div>
@@ -176,11 +197,23 @@ const HomePage = () => {
                           src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
                           className="rounded-image"
                         ></img>
-                        <h6 className="tweetOwner">David Mugisha <VerifiedIcon fontSize="small"></VerifiedIcon> <p>@davidmugisha </p></h6>
+                        <h6 className="tweetOwner">
+                          David Mugisha{" "}
+                          <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
+                          <p>@davidmugisha </p>
+                        </h6>
                       </div>
                       <div className="tweetBody">
-                      <p >Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. ❤️🌟 #Success #Happiness</p>
-                      <img src="https://images.pexels.com/photos/6945/sunset-summer-golden-hour-paul-filitchkin.jpg?auto=compress&cs=tinysrgb&w=600" height= "auto" width= "520px"></img>
+                        <p>
+                          Success is not the key to happiness. Happiness is the
+                          key to success. If you love what you are doing, you
+                          will be successful. ❤️🌟 #Success #Happiness
+                        </p>
+                        <img
+                          src="https://images.pexels.com/photos/6945/sunset-summer-golden-hour-paul-filitchkin.jpg?auto=compress&cs=tinysrgb&w=600"
+                          height="auto"
+                          width="520px"
+                        ></img>
                       </div>
                     </div>
                   </div>
@@ -188,13 +221,40 @@ const HomePage = () => {
               </Stack>
             </Col>
             <Col md={2}>
-              <Stack direction="vertical" gap={3}></Stack>
+              <Stack direction="vertical" gap={4}></Stack>
+              <div className="rightContainer">
+                <div className="searchForm">
+                  <form>
+                    <input
+                      type="text"
+                      placeholder="Search"
+                      aria-label="Search"
+                    ></input>
+                  </form>
+                </div>
+              </div>
             </Col>
           </Row>
         </Container>
       </div>
       {/* }}
       </TweetContext.Consumer> */}
+      {/* <UserContext.Consumer>
+        {
+          ({ user }) => {
+            console.log(user)
+            return (
+              
+                user.map((u) => {
+                  <h2>
+                  {u.username}
+                  </h2>
+                })
+              
+            )
+          }
+        }
+      </UserContext.Consumer> */}
     </>
   );
 };
