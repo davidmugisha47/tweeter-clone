@@ -1,131 +1,234 @@
-.logo {
-    margin-right: 10px;
-    margin-top: 20px;
+.log {
+  margin-left: 3px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .home {
-    display: flex;
-    margin-left: 10px;
-    margin-top: 10px;
-    height: 35px;
+  display: flex;
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 35px;
+  margin-bottom: 15px;
 }
 
 .home p {
-    margin-top: 1px;
-    margin-left: 18px;
-    font-weight: 500;
-    font-size: 1.3em;
+  margin-top: 1px;
+  margin-left: 18px;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .search {
-    display: flex;
-    margin-left: 10px;
-    height: 35px;
+  display: flex;
+  margin-left: 10px;
+  height: 35px;
+  margin-bottom: 15px;
 }
 
 .search p {
-    margin-left: 18px;
-    font-weight: 500;
-    font-size: 1.3em;
+  margin-left: 18px;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .notification {
-    display: flex;
-    margin-left: 10px;
-    height: 35px;
+  display: flex;
+  margin-left: 10px;
+  height: 35px;
+  margin-bottom: 15px;
 }
 
 .notification p {
-    margin-left: 18px;
-    font-weight: 500;
-    font-size: 1.3em;
+  margin-left: 18px;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .message {
-    display: flex;
-    margin-left: 10px;
-    height: 35px;
+  display: flex;
+  margin-left: 10px;
+  height: 35px;
+  margin-bottom: 15px;
 }
 
 .message p {
-    margin-left: 18px;
-    font-weight: 500;
-    font-size: 1.3em;
+  margin-left: 18px;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .list {
-    display: flex;
-    margin-left: 10px;
-    height: 35px;
+  display: flex;
+  margin-left: 10px;
+  height: 35px;
+  margin-bottom: 15px;
 }
 
 .list p {
-    margin-left: 18px;
-    font-weight: 500;
-    font-size: 1.3em;
+  margin-left: 18px;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .communities {
-    display: flex;
-    margin-left: 10px;
-    height: 35px;
+  display: flex;
+  margin-left: 10px;
+  height: 35px;
+  margin-bottom: 15px;
 }
 
 .communities p {
-    margin-left: 18px;
-    font-weight: 500;
-    font-size: 1.3em;
+  margin-left: 18px;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .premium {
-    display: flex;
-    margin-left: 6px;
-    height: 35px;
+  display: flex;
+  margin-left: 6px;
+  height: 35px;
+  margin-bottom: 15px;
 }
 
 .premium p {
-    margin-left: 18px;
-    font-weight: 500;
-    font-size: 1.3em;
+  margin-left: 18px;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .profile {
-    display: flex;
-    margin-left: 6px;
-    height: 35px;
+  display: flex;
+  margin-left: 6px;
+  height: 35px;
+  margin-bottom: 15px;
 }
 
 .profile p {
-    margin-left: 23px;
-    font-weight: 500;
-    font-size: 1.3em;
+  margin-left: 23px;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .more {
-    display: flex;
-    margin-left: 6px;
-    height: 35px;
+  display: flex;
+  margin-left: 6px;
+  height: 35px;
+  margin-bottom: 15px;
 }
 
 .more p {
-    margin-left: 23px;
-    font-weight: 500;
-    font-size: 1.3em;
+  margin-left: 23px;
+  font-weight: 500;
+  font-size: 1.3em;
 }
 
 .post button {
+  background-color: rgb(16, 143, 255);
+  border-radius: 40px;
+  border: 1px solid black;
+  font-weight: 500;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  height: 50px;
+  width: 250px;
+}
+
+.userProfile {
+    margin-top: 110px;
+}
+
+.post button a {
+  background-color: transparent;
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+}
+
+.rounded-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.left-container {
+    margin-right: 290px;
+}
+
+.navContainer {
+  border: 1px solid rgba(82, 81, 81, 0.621);
+  width: 620px;
+  margin-right: 100px;
+}
+
+.navContainer h4 {
+  padding: 10px;
+}
+
+.following {
+  display: flex;
+  padding: 3px;
+  justify-content: space-around;
+  font-family: sans-serif;
+}
+
+.forYou {
+    border-bottom: 3px solid rgb(16, 143, 255);
+}
+
+.postContainer {
+  border: 1px solid rgba(82, 81, 81, 0.621);
+  width: 620px;
+}
+
+.topImage {
+  margin-right: 20px;
+}
+
+.middle-container {
+    margin-right: 100px;
+}
+
+
+.what {
+  padding: 20px;
+  display: flex;
+}
+
+
+.input-container {
+    position: relative;
+    margin: 5px 0; 
+  }
+  
+  .input-container input {
+    border: none; 
+    width: 400px;
+    padding: 5px 0; 
+    outline: none; 
+  }
+  
+  .input-container input:focus {
+    border-color: grey; 
+  }
+
+  .thPost {
     background-color: rgb(16, 143, 255);
     border-radius: 40px;
     border: 1px solid black;
     font-weight: 500;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    height: 50px;
-    width: 250px;
-}
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    height: 35px;
+    width: 80px;
+    margin-left: 80px;
+  }
 
-.post button a {
-    background-color: transparent;
-    text-decoration: none;
-    color: white;
-    font-size: 1.2em;
-}
+  .low {
+    display: flex;
+    margin-top: 20px;
+    margin-right: 150px;
+    justify-content: space-between;
+    width: 385px;
+  }
+

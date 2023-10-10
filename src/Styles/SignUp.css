@@ -43,16 +43,7 @@
 .userProfile {
     display: flex;
     margin-top: 80px;
-  }
-  
-  .rounded-image {
-    width: 50px; /* Adjust the width as needed */
-    height: 50px; /* Adjust the height as needed */
-    border-radius: 50%; /* Makes the image rounded */
-    margin-right: 10px; /* Adjust the margin to create space between the image and text */
-    object-fit: cover; /* Scales the image to cover the container without distortion */
-  }
-  
+  }  
 
 .userName {
     margin-left: 8px;
@@ -75,21 +66,6 @@
     margin-left: 20px;
 }
 
-.navContainer {
-    border: 1px solid grey;
-    width: 600px;
-    margin-right: 100px;
-}
 
-.navContainer h4 {
-    padding: 10px;
-}
-
-.following {
-    display: flex;
-    /* padding: 10px; */
-    justify-content: space-around;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 
 
