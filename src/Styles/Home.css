@@ -134,7 +134,7 @@
 }
 
 .userProfile {
-    margin-top: 110px;
+  margin-top: 110px;
 }
 
 .post button a {
@@ -145,21 +145,27 @@
 }
 
 .rounded-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 40%;
   margin-right: 10px;
   object-fit: cover;
 }
 
 .left-container {
-    margin-right: 290px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 135px;
 }
 
 .navContainer {
   border: 1px solid rgba(82, 81, 81, 0.621);
   width: 620px;
-  margin-right: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 441px;
 }
 
 .navContainer h4 {
@@ -174,12 +180,13 @@
 }
 
 .forYou {
-    border-bottom: 3px solid rgb(16, 143, 255);
+  border-bottom: 3px solid rgb(16, 143, 255);
 }
 
 .postContainer {
   border: 1px solid rgba(82, 81, 81, 0.621);
   width: 620px;
+  margin-top: 106px;
 }
 
 .topImage {
@@ -187,48 +194,72 @@
 }
 
 .middle-container {
-    margin-right: 100px;
+  margin-right: 300px;
 }
-
 
 .what {
   padding: 20px;
   display: flex;
 }
 
-
 .input-container {
-    position: relative;
-    margin: 5px 0; 
-  }
-  
-  .input-container input {
-    border: none; 
-    width: 400px;
-    padding: 5px 0; 
-    outline: none; 
-  }
-  
-  .input-container input:focus {
-    border-color: grey; 
-  }
+  margin: 5px 0;
+}
 
-  .thPost {
-    background-color: rgb(16, 143, 255);
-    border-radius: 40px;
-    border: 1px solid black;
-    font-weight: 500;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    height: 35px;
-    width: 80px;
-    margin-left: 80px;
-  }
+.input-container input {
+  border: none;
+  width: 400px;
+  padding: 5px 0;
+  outline: none;
+}
 
-  .low {
-    display: flex;
-    margin-top: 20px;
-    margin-right: 150px;
-    justify-content: space-between;
-    width: 385px;
-  }
+.input-container input:focus {
+  border-bottom: 2px solid grey;
+}
 
+.thPost {
+  background-color: rgb(16, 143, 255);
+  border-radius: 40px;
+  border: 1px solid black;
+  font-weight: 500;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  height: 35px;
+  width: 80px;
+  margin-left: 80px;
+}
+
+.low {
+  display: flex;
+  margin-top: 20px;
+  margin-right: 150px;
+  justify-content: space-between;
+  width: 385px;
+}
+
+.themPosts {
+  border: 1px solid rgba(82, 81, 81, 0.621);
+  width: 620px;
+}
+
+.themData {
+  padding: 20px;
+}
+
+.tImage {
+  display: flex;
+}
+
+.tweetBody {
+  margin-left: 50px;
+}
+
+.tweetOwner {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweetOwner p {
+  margin-left: 10px;
+  font-weight: lighter;
+}

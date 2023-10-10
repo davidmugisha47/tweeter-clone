@@ -15,6 +15,7 @@ import ListIcon from "@mui/icons-material/List";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import VerifiedIcon from '@mui/icons-material/Verified';
 import "../Styles/Home.css";
 
 const HomePage = () => {
@@ -25,9 +26,9 @@ const HomePage = () => {
           ({ tweet }) => {
           return  */}
       <div>
-        <Container>
+        <Container >
           <Row>
-            <Col md={3}>
+            <Col md={2}>
               <Stack direction="vertical" gap={3}>
                 <div className="left-container">
                   <div className="log">
@@ -101,7 +102,7 @@ const HomePage = () => {
                 </div>
               </Stack>
             </Col>
-            <Col md={6}>
+            <Col md={8}>
               <Stack direction="vertical" gap={3}>
                 <div className="middle-container">
                   <div className="navContainer">
@@ -123,24 +124,72 @@ const HomePage = () => {
                         <form>
                           <input placeholder="What is happening?!"></input>
                           <div className="low">
-                            <PhotoIcon fontSize="small" style={{ marginRight: "20px" }}></PhotoIcon>
-                            <GifBoxIcon fontSize="small" style={{ marginRight: "20px" }}></GifBoxIcon>
-                            <ListIcon fontSize="small" style={{ marginRight: "20px" }}></ListIcon>
-                            <InsertEmoticonIcon fontSize="small" style={{ marginRight: "20px" }}></InsertEmoticonIcon>
-                            <InsertInvitationIcon fontSize="small" style={{ marginRight: "20px" }}></InsertInvitationIcon>
-                            <LocationOnIcon fontSize="small" style={{ marginRight: "20px" }}></LocationOnIcon>
+                            <PhotoIcon
+                              fontSize="small"
+                              style={{ marginRight: "20px" }}
+                            ></PhotoIcon>
+                            <GifBoxIcon
+                              fontSize="small"
+                              style={{ marginRight: "20px" }}
+                            ></GifBoxIcon>
+                            <ListIcon
+                              fontSize="small"
+                              style={{ marginRight: "20px" }}
+                            ></ListIcon>
+                            <InsertEmoticonIcon
+                              fontSize="small"
+                              style={{ marginRight: "20px" }}
+                            ></InsertEmoticonIcon>
+                            <InsertInvitationIcon
+                              fontSize="small"
+                              style={{ marginRight: "20px" }}
+                            ></InsertInvitationIcon>
+                            <LocationOnIcon
+                              fontSize="small"
+                              style={{ marginRight: "20px" }}
+                            ></LocationOnIcon>
                             <button className="thPost">Post</button>
                           </div>
                         </form>
                       </div>
                     </div>
                   </div>
+                  <div className="themPosts">
+                    <div className="themData">
+                      <div className="tImage">
+                        <img
+                          src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
+                          className="rounded-image"
+                        ></img>
+                        <h6 className="tweetOwner">David Mugisha <VerifiedIcon fontSize="small"></VerifiedIcon> <p>@davidmugisha </p></h6>
+                      </div>
+                      <div className="tweetBody">
+                      <p >Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. ❤️🌟 #Success #Happiness</p>
+                      <img src="https://images.pexels.com/photos/6945/sunset-summer-golden-hour-paul-filitchkin.jpg?auto=compress&cs=tinysrgb&w=600" height= "auto" width= "520px"></img>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="themPosts">
+                    <div className="themData">
+                      <div className="tImage">
+                        <img
+                          src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
+                          className="rounded-image"
+                        ></img>
+                        <h6 className="tweetOwner">David Mugisha <VerifiedIcon fontSize="small"></VerifiedIcon> <p>@davidmugisha </p></h6>
+                      </div>
+                      <div className="tweetBody">
+                      <p >Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. ❤️🌟 #Success #Happiness</p>
+                      <img src="https://images.pexels.com/photos/6945/sunset-summer-golden-hour-paul-filitchkin.jpg?auto=compress&cs=tinysrgb&w=600" height= "auto" width= "520px"></img>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </Stack>
             </Col>
-            {/* <Col md={3}>
+            <Col md={2}>
               <Stack direction="vertical" gap={3}></Stack>
-            </Col> */}
+            </Col>
           </Row>
         </Container>
       </div>
