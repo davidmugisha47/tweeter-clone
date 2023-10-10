@@ -1,14 +1,6 @@
 import React from "react";
 import TweetContext from "../Contexts/TweetContext";
-import {
-  Container,
-  Row,
-  Col,
-  Stack,
-  Card,
-  InputGroup,
-  FormControl,
-} from "react-bootstrap";
+import { Container, Row, Col, Stack } from "react-bootstrap";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -34,9 +26,9 @@ const HomePage = () => {
         {
           ({ tweet }) => {
           return  */}
-      <div>
-        <Container>
-          <Row>
+      <div style={{ backgroundColor: "black"  }}>
+        <Container style={{ backgroundColor: "black" }}>
+          <Row >
             <Col md={2}>
               <Stack direction="vertical" gap={3}>
                 <div className="left-container">
@@ -111,7 +103,7 @@ const HomePage = () => {
                 </div>
               </Stack>
             </Col>
-            <Col md={7}>
+            <Col md={7} >
               <Stack direction="vertical" gap={3}>
                 <div className="middle-container">
                   <div className="navContainer">
@@ -232,6 +224,32 @@ const HomePage = () => {
                     ></input>
                   </form>
                 </div>
+                <div className="subP">
+                  <h6>Subscribe to premium</h6>
+                  <p>
+                    Subscribe to unlock new features and if eligible, receive a
+                    share of ads revenue.
+                  </p>
+                  <button className="subscribeBtn">Subscribe</button>
+                </div>
+              <div className="trending">
+                <h4>Trends for you</h4>
+                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
+                <h6>React</h6>
+                <p>3.5M posts</p>
+                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
+                <h6>Express</h6>
+                <p>3.5M posts</p>
+                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
+                <h6>Node.js</h6>
+                <p>3.5M posts</p>
+                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
+                <h6>Full-stack</h6>
+                <p>3.5M posts</p>
+                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
+                <h6>Twitter</h6>
+                <p>3.5M posts</p>
+              </div>
               </div>
             </Col>
           </Row>

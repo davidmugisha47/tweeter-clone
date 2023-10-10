@@ -37,7 +37,7 @@ const SignUp = () => {
             height="50px"
           ></img>
         </div>
-        <h2 style={{ fontFamily: "sans-serif" }}>Join our large community</h2>
+        <h2 style={{ fontFamily: "sans-serif", backgroundColor: "black"}}>Join our large community</h2>
         <form onSubmit={handleSubmit}>
           <input
             className="inputs"
