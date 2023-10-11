@@ -27,7 +27,7 @@ const SignUp = () => {
   }
 
   return (
-    <div className="box">
+    <div className="box" >
       <div className="cnt">
         <div className="tlogo">
           <img

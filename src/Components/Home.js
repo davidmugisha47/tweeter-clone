@@ -21,10 +21,11 @@ import "../Styles/Home.css";
 import UserContext from "../Contexts/UserContext";
 
 const HomePage = () => {
-  const { signOutUser } = useContext(UserContext); // Get the signOutUser function from the UserContext.
+  const { signOutUser, user } = useContext(UserContext);
+
+  const { tweet } = useContext(TweetContext);
 
   const navigate = useNavigate();
-
 
   const handleLogout = () => {
     signOutUser();
@@ -32,12 +33,8 @@ const HomePage = () => {
   };
   return (
     <>
-      {/* <TweetContext.Consumer>
-        {
-          ({ tweet }) => {
-          return  */}
       <div style={{ backgroundColor: "black" }}>
-        <Container style={{ backgroundColor: "black" }}>
+        <Container>
           <Row>
             <Col md={2}>
               <Stack direction="vertical" gap={3}>
@@ -121,7 +118,9 @@ const HomePage = () => {
                     <div className="following">
                       <p className="forYou">For you</p>
                       <p>Following</p>
-                      <button className="logoutButton" onClick={handleLogout}>Sign out</button>
+                      <button className="logoutButton" onClick={handleLogout}>
+                        Sign out
+                      </button>
                     </div>
                   </div>
                   <div className="postContainer">
@@ -166,60 +165,59 @@ const HomePage = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="themPosts">
-                    <div className="themData">
-                      <div className="tImage">
-                        <img
-                          src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
-                          className="rounded-image"
-                        ></img>
-                        <h6 className="tweetOwner">
-                          David Mugisha{" "}
-                          <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
-                          <p>@davidmugisha </p>
-                        </h6>
-                      </div>
-                      <div className="tweetBody">
-                        <p>
-                          Success is not the key to happiness. Happiness is the
-                          key to success. If you love what you are doing, you
-                          will be successful. ❤️🌟 #Success #Happiness
-                        </p>
-                        <img
-                          src="https://images.pexels.com/photos/6945/sunset-summer-golden-hour-paul-filitchkin.jpg?auto=compress&cs=tinysrgb&w=600"
-                          height="auto"
-                          width="520px"
-                        ></img>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="themPosts">
-                    <div className="themData">
-                      <div className="tImage">
-                        <img
-                          src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
-                          className="rounded-image"
-                        ></img>
-                        <h6 className="tweetOwner">
-                          David Mugisha{" "}
-                          <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
-                          <p>@davidmugisha </p>
-                        </h6>
-                      </div>
-                      <div className="tweetBody">
-                        <p>
-                          Success is not the key to happiness. Happiness is the
-                          key to success. If you love what you are doing, you
-                          will be successful. ❤️🌟 #Success #Happiness
-                        </p>
-                        <img
-                          src="https://images.pexels.com/photos/6945/sunset-summer-golden-hour-paul-filitchkin.jpg?auto=compress&cs=tinysrgb&w=600"
-                          height="auto"
-                          width="520px"
-                        ></img>
-                      </div>
-                    </div>
-                  </div>
+                  <TweetContext.Consumer>
+                    {({ tweet }) => {
+                      return (
+                        <div>
+                          {console.log(tweet)}
+                          <div>
+                            {tweet.map((tweet) => {
+                              const matchingUser = user.find(
+                                (u) => u.userId === tweet.userId
+                              );
+                              if (matchingUser) {
+                                return (
+                                  <div className="themPosts">
+                                    <div className="themData">
+                                      <div className="tImage">
+                                        <img
+                                          key={matchingUser.userId}
+                                          src={matchingUser.img}
+                                          className="rounded-image"
+                                        ></img>
+                                        <h6
+                                          key={matchingUser.userId}
+                                          className="tweetOwner"
+                                        >
+                                          {matchingUser.firstName}{" "}
+                                          {matchingUser.lastName}
+                                          <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
+                                          <p key={matchingUser.userId}>
+                                            {" "}
+                                            {matchingUser.username}
+                                          </p>
+                                        </h6>
+                                      </div>
+                                      <div className="tweetBody">
+                                        <p>{tweet.title}</p>
+                                        <img
+                                          src={tweet.image}
+                                          height="auto"
+                                          width="520px"
+                                          style={{ borderRadius: "8px" }}
+                                        ></img>
+                                      </div>
+                                    </div>
+                                  </div>
+                                );
+                              }
+                              return null;
+                            })}
+                          </div>
+                        </div>
+                      );
+                    }}
+                  </TweetContext.Consumer>
                 </div>
               </Stack>
             </Col>
@@ -281,24 +279,6 @@ const HomePage = () => {
           </Row>
         </Container>
       </div>
-      {/* }}
-      </TweetContext.Consumer> */}
-      {/* <UserContext.Consumer>
-        {
-          ({ user }) => {
-            console.log(user)
-            return (
-              
-                user.map((u) => {
-                  <h2>
-                  {u.username}
-                  </h2>
-                })
-              
-            )
-          }
-        }
-      </UserContext.Consumer> */}
     </>
   );
 };

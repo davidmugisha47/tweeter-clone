@@ -6,7 +6,7 @@ const SignIn = () => {
 
   return (
     <div>
-        <Row>
+        <Row style={{ backgroundColor: "black" }}>
         <Col>
           <div className="xlogo">
             <img
@@ -63,7 +63,7 @@ const SignIn = () => {
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row style={{ backgroundColor: "black" }}>
       <div className="footer">
         <p>About</p>
         <p>Help Center</p>

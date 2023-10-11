@@ -23,53 +23,54 @@ const Login = () => {
   }
 
   return (
-    <div className="container">
-      <div className="cntnr">
-        <div className="tlogo">
-          <img
-            src="https://www.businessofapps.com/wp-content/uploads/2023/07/twitter-x-e1690183153269.webp"
-            alt="Xlogo"
-            width="45px"
-            height="30px"
-          ></img>
-        </div>
-        <div className="frstP">
-          <h3>Sign in to X</h3>
-        </div>
-        <div className="buttonOne">
-          <button>
+    <div style={{ backgroundColor: "black" }}>
+      <div className="container" style={{ backgroundColor: "black" }}>
+        <div className="cntnr">
+          <div className="tlogo">
+            <img
+              src="https://www.businessofapps.com/wp-content/uploads/2023/07/twitter-x-e1690183153269.webp"
+              alt="Xlogo"
+              width="45px"
+              height="30px"
+            ></img>
+          </div>
+          <div className="frstP">
+            <h3>Sign in to X</h3>
+          </div>
+          <div className="buttonOne">
+            <button>
+              <span>
+                <img
+                  src="https://banner2.cleanpng.com/20180416/ppe/kisspng-g-suite-pearl-river-middle-school-google-docs-soft-google-plus-5ad4f155b36555.6827254815239048537348.jpg"
+                  alt="logo"
+                  width="28px"
+                  height="28px"
+                ></img>
+              </span>
+              Sign up with Google{" "}
+            </button>
+          </div>
+          <div className="buttonTwo">
+            <button>
+              <span>
+                <img
+                  src="https://media.designrush.com/inspiration_images/134802/conversions/_1511456315_653_apple-preview.jpg"
+                  alt="logo"
+                  width="50px"
+                  height="30px"
+                ></img>
+              </span>
+              Sign up with Apple{" "}
+            </button>
+          </div>
+          <div className="oor">
             <span>
-              <img
-                src="https://banner2.cleanpng.com/20180416/ppe/kisspng-g-suite-pearl-river-middle-school-google-docs-soft-google-plus-5ad4f155b36555.6827254815239048537348.jpg"
-                alt="logo"
-                width="28px"
-                height="28px"
-              ></img>
+              <hr style={{ maxWidth: "120px" }} />
+              <p>Or</p>
+              <hr style={{ maxWidth: "120px" }} />
             </span>
-            Sign up with Google{" "}
-          </button>
-        </div>
-        <div className="buttonTwo">
-          <button>
-            <span>
-              <img
-                src="https://media.designrush.com/inspiration_images/134802/conversions/_1511456315_653_apple-preview.jpg"
-                alt="logo"
-                width="50px"
-                height="30px"
-              ></img>
-            </span>
-            Sign up with Apple{" "}
-          </button>
-        </div>
-        <div className="oor">
-          <span>
-            <hr style={{ maxWidth: "120px" }} />
-            <p>Or</p>
-            <hr style={{ maxWidth: "120px" }} />
-          </span>
-        </div>
-        <form onSubmit={handleSubmit}>
+          </div>
+          <form onSubmit={handleSubmit}>
             <input
               className="inputOne"
               placeholder="Enter username"
@@ -86,15 +87,18 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
-          <div className="buttonFour">
-            <button>Sign in</button>
+            <div className="buttonFour">
+              <button>Sign in</button>
+            </div>
+          </form>
+          <div className="buttonFive">
+            <button>Forgot password?</button>
           </div>
-        </form>
-        <div className="buttonFive">
-          <button>Forgot password?</button>
-        </div>
-        <div className="qwn">
-          <p>Don't have an account? <a href="Signup">Sign up</a></p>
+          <div className="qwn">
+            <p>
+              Don't have an account? <a href="Signup">Sign up</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
