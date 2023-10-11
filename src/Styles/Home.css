@@ -347,3 +347,13 @@
     margin-top: 10px;
     font-family: 'Franklin Gothic Small', 'Arial', Arial, sans-serif;
 }
+
+.logoutButton {
+    border: none;
+    background-color: transparent;
+    margin-bottom: 16px;
+}
+
+.logoutButton:hover {
+    border-bottom: 2px solid rgb(16, 143, 255);
+}

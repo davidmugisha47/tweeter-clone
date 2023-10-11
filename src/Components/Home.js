@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import TweetContext from "../Contexts/TweetContext";
 import { Container, Row, Col, Stack } from "react-bootstrap";
 import HomeIcon from "@mui/icons-material/Home";
@@ -20,15 +21,24 @@ import "../Styles/Home.css";
 import UserContext from "../Contexts/UserContext";
 
 const HomePage = () => {
+  const { signOutUser } = useContext(UserContext); // Get the signOutUser function from the UserContext.
+
+  const navigate = useNavigate();
+
+
+  const handleLogout = () => {
+    signOutUser();
+    navigate("/login");
+  };
   return (
     <>
       {/* <TweetContext.Consumer>
         {
           ({ tweet }) => {
           return  */}
-      <div style={{ backgroundColor: "black"  }}>
+      <div style={{ backgroundColor: "black" }}>
         <Container style={{ backgroundColor: "black" }}>
-          <Row >
+          <Row>
             <Col md={2}>
               <Stack direction="vertical" gap={3}>
                 <div className="left-container">
@@ -103,7 +113,7 @@ const HomePage = () => {
                 </div>
               </Stack>
             </Col>
-            <Col md={7} >
+            <Col md={7}>
               <Stack direction="vertical" gap={3}>
                 <div className="middle-container">
                   <div className="navContainer">
@@ -111,6 +121,7 @@ const HomePage = () => {
                     <div className="following">
                       <p className="forYou">For you</p>
                       <p>Following</p>
+                      <button className="logoutButton" onClick={handleLogout}>Sign out</button>
                     </div>
                   </div>
                   <div className="postContainer">
@@ -232,24 +243,39 @@ const HomePage = () => {
                   </p>
                   <button className="subscribeBtn">Subscribe</button>
                 </div>
-              <div className="trending">
-                <h4>Trends for you</h4>
-                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
-                <h6>React</h6>
-                <p>3.5M posts</p>
-                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
-                <h6>Express</h6>
-                <p>3.5M posts</p>
-                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
-                <h6>Node.js</h6>
-                <p>3.5M posts</p>
-                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
-                <h6>Full-stack</h6>
-                <p>3.5M posts</p>
-                <p className="it">News trending <MoreHorizIcon fontSize="small"></MoreHorizIcon></p>
-                <h6>Twitter</h6>
-                <p>3.5M posts</p>
-              </div>
+                <div className="trending">
+                  <h4>Trends for you</h4>
+                  <p className="it">
+                    News trending{" "}
+                    <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                  </p>
+                  <h6>React</h6>
+                  <p>3.5M posts</p>
+                  <p className="it">
+                    News trending{" "}
+                    <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                  </p>
+                  <h6>Express</h6>
+                  <p>3.5M posts</p>
+                  <p className="it">
+                    News trending{" "}
+                    <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                  </p>
+                  <h6>Node.js</h6>
+                  <p>3.5M posts</p>
+                  <p className="it">
+                    News trending{" "}
+                    <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                  </p>
+                  <h6>Full-stack</h6>
+                  <p>3.5M posts</p>
+                  <p className="it">
+                    News trending{" "}
+                    <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                  </p>
+                  <h6>Twitter</h6>
+                  <p>3.5M posts</p>
+                </div>
               </div>
             </Col>
           </Row>

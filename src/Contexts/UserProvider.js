@@ -34,6 +34,10 @@ export const UserProvider = (props) => {
         );
     }
 
+    function signOutUser() {
+        localStorage.removeItem('mytweeterToken');
+    }
+
     function getAllUsers() {
         return axios.get(baseUrl).then((response) => setUsers(response.data))
     }
@@ -48,7 +52,8 @@ export const UserProvider = (props) => {
             getAllUsers,
             getUser,
             createUser,
-            signInUser
+            signInUser,
+            signOutUser
         }}>
             { props.children }
         </UserContext.Provider>
