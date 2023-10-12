@@ -1,0 +1,85 @@
+.headingContainer {
+    border: 1px solid rgba(82, 81, 81, 0.621);
+    width: 620px;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 410px;
+    background-color: rgba(0, 0, 0, 0.711); 
+    backdrop-filter: blur(10px);
+    display: flex;
+}
+
+.headingContainer h4 {
+    margin-left: 20px;
+}
+
+.space {
+    height: 550px;
+    width: 620px;
+    border: 1px solid rgba(82, 81, 81, 0.621);
+}
+
+.nothing {
+    height: 200px;
+    background-color: rgb(40, 42, 45);
+    width: 620px;
+}
+
+.crazy {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    margin-top: 130px;
+    margin-left: 20px;
+    border: 4px solid black;
+}
+
+.editButton {
+    background-color: transparent;
+    border-radius: 40px;
+    border: 1px solid rgb(130, 130, 130);
+    font-weight: 500;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    height: 36px;
+    width: 120px;
+    margin-left: 450px;
+    margin-top: 20px;
+}
+
+.christian {
+    margin-top: 40px;
+    margin-left: 25px;
+}
+
+.christian h6 {
+    font-size: 1.5em;
+}
+
+.christian p {
+    font-weight: lighter;
+}
+
+.followingNum {
+    display: flex;
+}
+
+.followingNum p {
+    margin-right: 25px;
+}
+
+.Links {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-right: 20px;
+    font-weight: bolder;
+}
+
+.Links .Post {
+    margin-bottom: 3px solid rgb(16, 143, 255);
+}
+

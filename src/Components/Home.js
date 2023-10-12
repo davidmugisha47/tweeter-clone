@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TweetContext from "../Contexts/TweetContext";
 import { Container, Row, Col, Stack } from "react-bootstrap";
 import HomeIcon from "@mui/icons-material/Home";
@@ -17,8 +17,11 @@ import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import "../Styles/Home.css";
 import UserContext from "../Contexts/UserContext";
+import LoginOutlined from "@mui/icons-material/LoginOutlined";
 
 const HomePage = () => {
   const { signOutUser, user } = useContext(UserContext);
@@ -84,7 +87,7 @@ const HomePage = () => {
                   </div>
                   <div className="home">
                     <HomeIcon fontSize="large"></HomeIcon>
-                    <p>Home</p>
+                    <a href="twitter">Home</a>
                   </div>
                   <div className="search">
                     <SearchIcon fontSize="large"></SearchIcon>
@@ -116,17 +119,28 @@ const HomePage = () => {
                     ></img>
                     <p>Premium</p>
                   </div>
-                  <div className="profile">
+                  {token && (
+                    <div className="profile">
                     <PersonOutlineIcon fontSize="large"></PersonOutlineIcon>
-                    <p>Profile</p>
+                    <a href="profile">Profile</a>
                   </div>
-                  <div className="more">
-                    <MoreHorizIcon fontSize="large"></MoreHorizIcon>
-                    <p>More</p>
+                  )}
+                  {token ? (
+                    <div className="signOut">
+                    <LogoutOutlinedIcon fontSize="large"></LogoutOutlinedIcon>
+                    <button className="logoutButton" onClick={handleLogout}>
+                      Sign out
+                    </button>
                   </div>
+                  ) : (
+                    <div className="signIn">
+                      <LoginOutlined fontSize="large"></LoginOutlined>
+                      <a href="login">Sign In</a>
+                    </div>
+                  )}
                   <div className="post">
                     <button>
-                      <a href="signup">Post</a>
+                      <a href="login">Post</a>
                     </button>
                   </div>
                   <div>
@@ -172,9 +186,6 @@ const HomePage = () => {
                     <div className="following">
                       <p className="forYou">For you</p>
                       <p>Following</p>
-                      <button className="logoutButton" onClick={handleLogout}>
-                        Sign out
-                      </button>
                     </div>
                   </div>
                   {token ? (
@@ -265,8 +276,16 @@ const HomePage = () => {
                                           {matchingUser.lastName}
                                           <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
                                           <p key={matchingUser.userId}>
-                                            {" "}
-                                            {matchingUser.username} {DateTime(tweet.createdAt)}
+                                            <Link
+                                              style={{
+                                                textDecoration: "none",
+                                                color: "white",
+                                              }}
+                                              to={`/profile/${matchingUser.userId}`}
+                                            >
+                                              {matchingUser.username}
+                                            </Link>{" "}
+                                            {DateTime(tweet.createdAt)}
                                           </p>
                                         </h6>
                                       </div>

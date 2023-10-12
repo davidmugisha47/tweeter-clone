@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import HomePage from "./Components/Home";
+import Profile from "./Components/Profile";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="twitter" element={<HomePage />} />
+            <Route path="profile:userId" element={<Profile />} />
           </Routes>
         </BrowserRouter>
       </TweetProvider>
