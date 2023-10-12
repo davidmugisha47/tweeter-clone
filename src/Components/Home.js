@@ -30,8 +30,8 @@ const HomePage = () => {
   const DateTime = (dataTime) => {
     const options = {
       year: "numeric",
-      month: "2digit",
-      day: "2digit",
+      month: "2-digit",
+      day: "2-digit",
       hour: "numeric",
       minute: "numeric",
       hour12: true,
@@ -266,7 +266,7 @@ const HomePage = () => {
                                           <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
                                           <p key={matchingUser.userId}>
                                             {" "}
-                                            {matchingUser.username}
+                                            {matchingUser.username} {DateTime(tweet.createdAt)}
                                           </p>
                                         </h6>
                                       </div>
