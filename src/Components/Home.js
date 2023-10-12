@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TweetContext from "../Contexts/TweetContext";
 import { Container, Row, Col, Stack } from "react-bootstrap";
@@ -23,7 +23,42 @@ import UserContext from "../Contexts/UserContext";
 const HomePage = () => {
   const { signOutUser, user } = useContext(UserContext);
 
-  const { tweet } = useContext(TweetContext);
+  const { tweet, addTweet } = useContext(TweetContext);
+
+  const [newTweet, setNewTweet] = useState({ title: "", image: "" });
+
+  const DateTime = (dataTime) => {
+    const options = {
+      year: "numeric",
+      month: "2digit",
+      day: "2digit",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    };
+
+    return new Date(dataTime).toLocaleString(undefined, options);
+  };
+
+  const handleChange = (event) => {
+    setNewTweet((prevValue) => {
+      return { ...prevValue, [event.target.name]: event.target.value };
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addTweet(newTweet)
+      .then(() => {
+        navigate("/twitter");
+      })
+      .catch((err) => {
+        console.log(err);
+        navigate("/login");
+      });
+  };
+
+  let token = localStorage.getItem("mytweeterToken");
 
   const navigate = useNavigate();
 
@@ -94,18 +129,37 @@ const HomePage = () => {
                       <a href="signup">Post</a>
                     </button>
                   </div>
-                  <div className="userProfile">
-                    <img
-                      src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
-                      className="rounded-image"
-                    ></img>
-                    <div className="userName">
-                      <h6>David Mugisha</h6>
-                      <p>@davidmugisha</p>
-                    </div>
-                    <div className="pMenu">
-                      <MoreHorizIcon fontSize="small"></MoreHorizIcon>
-                    </div>
+                  <div>
+                    <UserContext.Consumer>
+                      {({ user }) => {
+                        return (
+                          <div>
+                            <div>
+                              {user.map((u) => {
+                                return (
+                                  <div key={u.id} className="userProfile">
+                                    <img
+                                      key={u.id}
+                                      src={u.img}
+                                      className="rounded-image"
+                                    ></img>
+                                    <div className="userName">
+                                      <h6 key={u.id}>
+                                        {u.firstName} {u.lastName}
+                                      </h6>
+                                      <p key={u.id}>{u.username}</p>
+                                    </div>
+                                    <div className="pMenu">
+                                      <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      }}
+                    </UserContext.Consumer>
                   </div>
                 </div>
               </Stack>
@@ -123,48 +177,66 @@ const HomePage = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="postContainer">
-                    <div className="what">
-                      <div className="tImage">
-                        <img
-                          src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
-                          className="rounded-image"
-                        ></img>
-                      </div>
-                      <div className="input-container">
-                        <form>
-                          <input placeholder="What is happening?!"></input>
-                          <div className="low">
-                            <PhotoIcon
-                              fontSize="small"
-                              style={{ marginRight: "20px" }}
-                            ></PhotoIcon>
-                            <GifBoxIcon
-                              fontSize="small"
-                              style={{ marginRight: "20px" }}
-                            ></GifBoxIcon>
-                            <ListIcon
-                              fontSize="small"
-                              style={{ marginRight: "20px" }}
-                            ></ListIcon>
-                            <InsertEmoticonIcon
-                              fontSize="small"
-                              style={{ marginRight: "20px" }}
-                            ></InsertEmoticonIcon>
-                            <InsertInvitationIcon
-                              fontSize="small"
-                              style={{ marginRight: "20px" }}
-                            ></InsertInvitationIcon>
-                            <LocationOnIcon
-                              fontSize="small"
-                              style={{ marginRight: "20px" }}
-                            ></LocationOnIcon>
-                            <button className="thPost">Post</button>
-                          </div>
-                        </form>
+                  {token ? (
+                    <div className="postContainer">
+                      <div className="what">
+                        <div className="tImage">
+                          <img
+                            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            className="rounded-image"
+                          ></img>
+                        </div>
+                        <div className="input-container">
+                          <form onSubmit={handleSubmit}>
+                            <input
+                              placeholder="What is happening?!"
+                              type="text"
+                              name="title"
+                              value={newTweet.title}
+                              onChange={handleChange}
+                            ></input>
+                            <input
+                              placeholder="What does it look like?"
+                              type="text"
+                              name="image"
+                              value={newTweet.image}
+                              onChange={handleChange}
+                            ></input>
+                            <div className="low">
+                              <PhotoIcon
+                                fontSize="small"
+                                style={{ marginRight: "20px" }}
+                              ></PhotoIcon>
+                              <GifBoxIcon
+                                fontSize="small"
+                                style={{ marginRight: "20px" }}
+                              ></GifBoxIcon>
+                              <ListIcon
+                                fontSize="small"
+                                style={{ marginRight: "20px" }}
+                              ></ListIcon>
+                              <InsertEmoticonIcon
+                                fontSize="small"
+                                style={{ marginRight: "20px" }}
+                              ></InsertEmoticonIcon>
+                              <InsertInvitationIcon
+                                fontSize="small"
+                                style={{ marginRight: "20px" }}
+                              ></InsertInvitationIcon>
+                              <LocationOnIcon
+                                fontSize="small"
+                                style={{ marginRight: "20px" }}
+                              ></LocationOnIcon>
+                              <button className="thPost">Post</button>
+                            </div>
+                          </form>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div style={{ marginTop: "100px" }}></div>
+                  )}
+
                   <TweetContext.Consumer>
                     {({ tweet }) => {
                       return (
