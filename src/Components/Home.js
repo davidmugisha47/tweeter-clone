@@ -121,17 +121,17 @@ const HomePage = () => {
                   </div>
                   {token && (
                     <div className="profile">
-                    <PersonOutlineIcon fontSize="large"></PersonOutlineIcon>
-                    <a href="profile">Profile</a>
-                  </div>
+                      <PersonOutlineIcon fontSize="large"></PersonOutlineIcon>
+                      <a href="profile">Profile</a>
+                    </div>
                   )}
                   {token ? (
                     <div className="signOut">
-                    <LogoutOutlinedIcon fontSize="large"></LogoutOutlinedIcon>
-                    <button className="logoutButton" onClick={handleLogout}>
-                      Sign out
-                    </button>
-                  </div>
+                      <LogoutOutlinedIcon fontSize="large"></LogoutOutlinedIcon>
+                      <button className="logoutButton" onClick={handleLogout}>
+                        Sign out
+                      </button>
+                    </div>
                   ) : (
                     <div className="signIn">
                       <LoginOutlined fontSize="large"></LoginOutlined>
@@ -143,38 +143,40 @@ const HomePage = () => {
                       <a href="login">Post</a>
                     </button>
                   </div>
-                  <div>
-                    <UserContext.Consumer>
-                      {({ user }) => {
-                        return (
-                          <div>
+                  {token && (
+                    <div>
+                      <UserContext.Consumer>
+                        {({ user }) => {
+                          return (
                             <div>
-                              {user.map((u) => {
-                                return (
-                                  <div key={u.id} className="userProfile">
-                                    <img
-                                      key={u.id}
-                                      src={u.img}
-                                      className="rounded-image"
-                                    ></img>
-                                    <div className="userName">
-                                      <h6 key={u.id}>
-                                        {u.firstName} {u.lastName}
-                                      </h6>
-                                      <p key={u.id}>{u.username}</p>
+                              <div>
+                                {user.map((u) => {
+                                  return (
+                                    <div key={u.id} className="userProfile">
+                                      <img
+                                        key={u.id}
+                                        src={u.img}
+                                        className="rounded-image"
+                                      ></img>
+                                      <div className="userName">
+                                        <h6 key={u.id}>
+                                          {u.firstName} {u.lastName}
+                                        </h6>
+                                        <p key={u.id}>{u.username}</p>
+                                      </div>
+                                      <div className="pMenu">
+                                        <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                                      </div>
                                     </div>
-                                    <div className="pMenu">
-                                      <MoreHorizIcon fontSize="small"></MoreHorizIcon>
-                                    </div>
-                                  </div>
-                                );
-                              })}
+                                  );
+                                })}
+                              </div>
                             </div>
-                          </div>
-                        );
-                      }}
-                    </UserContext.Consumer>
-                  </div>
+                          );
+                        }}
+                      </UserContext.Consumer>
+                    </div>
+                  )}
                 </div>
               </Stack>
             </Col>

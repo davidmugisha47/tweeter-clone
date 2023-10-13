@@ -12,22 +12,20 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import LoginOutlined from "@mui/icons-material/LoginOutlined";
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { useParams, Link } from "react-router-dom";
 import "../Styles/Profile.css";
 
 function Profile() {
-  const { tweet, deleteTweet, addTweet } = useContext(TweetContext);
+  const { tweet, deleteTweet } = useContext(TweetContext);
 
-  const { getUser } = useContext(UserContext);
-
-  const { signOutUser, user } = useContext(UserContext);
+  const { getUser, signOutUser } = useContext(UserContext);
 
   let params = useParams();
 
   let navigate = useParams();
-
-  const [newTweet, setNewTweet] = useState({ title: "", image: "" });
 
   const DateTime = (dataTime) => {
     const options = {
@@ -40,24 +38,6 @@ function Profile() {
     };
 
     return new Date(dataTime).toLocaleString(undefined, options);
-  };
-
-  const handleChange = (event) => {
-    setNewTweet((prevValue) => {
-      return { ...prevValue, [event.target.name]: event.target.value };
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addTweet(newTweet)
-      .then(() => {
-        navigate("/twitter");
-      })
-      .catch((err) => {
-        console.log(err);
-        navigate("/login");
-      });
   };
 
   let token = localStorage.getItem("mytweeterToken");
@@ -74,11 +54,6 @@ function Profile() {
     firstName: "",
     lastName: "",
     bio: "",
-  });
-
-  const [tweets, SetTweet] = useState({
-    tweetId: "",
-    tweet: "",
   });
 
   let { id, username, img, firstName, lastName, bio } = userProfile;
@@ -108,7 +83,7 @@ function Profile() {
           <Row>
             <Col md={2}>
               <Stack direction="vertical" gap={3}>
-                <div className="left-container">
+              <div className="left-container">
                   <div className="log">
                     <img
                       src="https://www.businessofapps.com/wp-content/uploads/2023/07/twitter-x-e1690183153269.webp"
@@ -119,7 +94,7 @@ function Profile() {
                   </div>
                   <div className="home">
                     <HomeIcon fontSize="large"></HomeIcon>
-                    <p>Home</p>
+                    <a href="twitter">Home</a>
                   </div>
                   <div className="search">
                     <SearchIcon fontSize="large"></SearchIcon>
@@ -151,51 +126,64 @@ function Profile() {
                     ></img>
                     <p>Premium</p>
                   </div>
-                  <div className="profile">
-                    <PersonOutlineIcon fontSize="large"></PersonOutlineIcon>
-                    <p>Profile</p>
-                  </div>
-                  <div className="more">
-                    <MoreHorizIcon fontSize="large"></MoreHorizIcon>
-                    <p>More</p>
-                  </div>
+                  {token && (
+                    <div className="profile">
+                      <PersonOutlineIcon fontSize="large"></PersonOutlineIcon>
+                      <a href="profile">Profile</a>
+                    </div>
+                  )}
+                  {token ? (
+                    <div className="signOut">
+                      <LogoutOutlinedIcon fontSize="large"></LogoutOutlinedIcon>
+                      <button className="logoutButton" onClick={handleLogout}>
+                        Sign out
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="signIn">
+                      <LoginOutlined fontSize="large"></LoginOutlined>
+                      <a href="login">Sign In</a>
+                    </div>
+                  )}
                   <div className="post">
                     <button>
-                      <a href="signup">Post</a>
+                      <a href="login">Post</a>
                     </button>
                   </div>
-                  <div>
-                    <UserContext.Consumer>
-                      {({ user }) => {
-                        return (
-                          <div>
+                  {token && (
+                    <div>
+                      <UserContext.Consumer>
+                        {({ user }) => {
+                          return (
                             <div>
-                              {user.map((u) => {
-                                return (
-                                  <div key={u.id} className="userProfile">
-                                    <img
-                                      key={u.id}
-                                      src={u.img}
-                                      className="rounded-image"
-                                    ></img>
-                                    <div className="userName">
-                                      <h6 key={u.id}>
-                                        {u.firstName} {u.lastName}
-                                      </h6>
-                                      <p key={u.id}>{u.username}</p>
+                              <div>
+                                {user.map((u) => {
+                                  return (
+                                    <div key={u.id} className="userProfile">
+                                      <img
+                                        key={u.id}
+                                        src={u.img}
+                                        className="rounded-image"
+                                      ></img>
+                                      <div className="userName">
+                                        <h6 key={u.id}>
+                                          {u.firstName} {u.lastName}
+                                        </h6>
+                                        <p key={u.id}>{u.username}</p>
+                                      </div>
+                                      <div className="pMenu">
+                                        <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                                      </div>
                                     </div>
-                                    <div className="pMenu">
-                                      <MoreHorizIcon fontSize="small"></MoreHorizIcon>
-                                    </div>
-                                  </div>
-                                );
-                              })}
+                                  );
+                                })}
+                              </div>
                             </div>
-                          </div>
-                        );
-                      }}
-                    </UserContext.Consumer>
-                  </div>
+                          );
+                        }}
+                      </UserContext.Consumer>
+                    </div>
+                  )}
                 </div>
               </Stack>
             </Col>

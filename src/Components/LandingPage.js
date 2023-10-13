@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import "../Styles/SignIn.css";
 
-const SignIn = () => {
+const LandingPage = () => {
 
   return (
     <div>
@@ -60,6 +60,9 @@ const SignIn = () => {
             <div className="button4">
                 <button><a href="login">Sign in</a></button>
             </div>
+            <div className="redirect">
+              <a href="twitter">Continue to Twitter ➡️</a>
+            </div>
           </div>
         </Col>
       </Row>
@@ -89,4 +92,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default LandingPage;

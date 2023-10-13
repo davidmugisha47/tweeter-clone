@@ -1,5 +1,5 @@
 import React from "react";
-import SignIn from "./Components/SignIn";
+import LandingPage from "./Components/LandingPage";
 import { UserProvider } from "./Contexts/UserProvider";
 import { TweetProvider } from "./Contexts/TweeteProvider";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -14,7 +14,7 @@ function App() {
       <TweetProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<SignIn />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="twitter" element={<HomePage />} />
