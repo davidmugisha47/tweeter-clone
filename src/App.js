@@ -18,7 +18,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="twitter" element={<HomePage />} />
-            <Route path="profile:userId" element={<Profile />} />
+            <Route path="profile/:userId" element={<Profile />} />
           </Routes>
         </BrowserRouter>
       </TweetProvider>

@@ -3,6 +3,7 @@
     max-width: 250px;
     display: grid;
     place-items: center; 
+    background-color: black;
 }
 
 .log {

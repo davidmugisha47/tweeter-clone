@@ -184,9 +184,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  margin-left: 418px;
+  margin-left: 410px;
   background-color: rgba(0, 0, 0, 0.711); 
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
 }
 
 .navContainer h4 {
@@ -371,3 +371,46 @@
     background-color: transparent;
     margin-bottom: 16px;
 }
+
+
+@media (max-width: 768px) {
+  .left-container {
+    margin-left: 0;
+  }
+
+  .navContainer {
+    margin-left: 228px;
+  }
+
+  .middle-container {
+    margin-right: 0;
+    margin-left: 100px;
+  }
+
+  .rightContainer {
+    position: static;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+  .left-container {
+    margin-left: 0;
+    width: 100px;
+  }
+
+  .navContainer {
+    margin-left: 250px;
+
+  }
+
+  .middle-container {
+    margin-right: 0;
+  }
+
+  .rightContainer {
+    position: static;
+    visibility: collapse;
+  }
+}
+

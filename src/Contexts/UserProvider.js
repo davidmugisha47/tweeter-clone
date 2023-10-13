@@ -43,7 +43,9 @@ export const UserProvider = (props) => {
     }
 
     function getUser(id) {
-        return axios.get(baseUrl + id).then((response) => setUsers(response.data))
+        return axios.get(baseUrl + id).then((response) => {
+            return response.data
+        })
     }
 
     return (

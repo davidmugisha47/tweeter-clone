@@ -13,7 +13,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import LoginOutlined from "@mui/icons-material/LoginOutlined";
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { useParams, Link } from "react-router-dom";
 import "../Styles/Profile.css";
@@ -56,18 +56,18 @@ function Profile() {
     bio: "",
   });
 
-  let { id, username, img, firstName, lastName, bio } = userProfile;
+  let { id, username, img, firstName, lastName, bio, createdAt } = userProfile;
 
-  const handleDelete = () => {
-    deleteTweet(id)
-      .then(() => {
-        navigate("/profile");
-      })
-      .catch((err) => {
-        console.log(err);
-        window.alert("We are having trouble deleting your post");
-      });
-  };
+  // const handleDelete = () => {
+  //   deleteTweet(id)
+  //     .then(() => {
+  //       navigate("/profile");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       window.alert("We are having trouble deleting your post");
+  //     });
+  // };
 
   useEffect(() => {
     async function fetch() {
@@ -83,7 +83,7 @@ function Profile() {
           <Row>
             <Col md={2}>
               <Stack direction="vertical" gap={3}>
-              <div className="left-container">
+                <div className="left-container">
                   <div className="log">
                     <img
                       src="https://www.businessofapps.com/wp-content/uploads/2023/07/twitter-x-e1690183153269.webp"
@@ -192,24 +192,25 @@ function Profile() {
                 <div className="middle-container">
                   <div className="headingContainer">
                     <ArrowBackIcon></ArrowBackIcon>
-                    <h4>Mugisha david</h4>
+                    <h4>
+                      {firstName} {lastName}
+                    </h4>
                   </div>
                   <div style={{ marginTop: "79px" }}></div>
                   <div className="space">
                     <div className="nothing">
-                      <img
-                        className="crazy"
-                        src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600"
-                      ></img>
+                      <img className="crazy" src={img}></img>
                     </div>
                     <button className="editButton">Edit profile</button>
                     <div className="christian">
-                      <h6>David Mugisha</h6>
-                      <p>davidmugisha</p>
-                      <p>bio</p>
+                      <h6>
+                        {firstName} {lastName}
+                      </h6>
+                      <p>{username}</p>
+                      <p>{bio}</p>
                       <p>
                         <DateRangeIcon fontSize="small"></DateRangeIcon> Joined
-                        at {DateTime(tweet.createdAt)}
+                        at {DateTime(createdAt)}
                       </p>
                       <div className="followingNum">
                         <p>0Following</p>
@@ -231,22 +232,56 @@ function Profile() {
                       </div>
                     </div>
                   </div>
-                  <div style={{ color: "black" }}>
+                  <div key={id} style={{ color: "white" }}>
                     {tweet.map((t) => {
-                       console.log(tweet.userId, userProfile.userId);
+                      console.log(tweet.userId, userProfile.userId);
                       if (t.userId === userProfile.userId) {
                         return (
-                          <div key={t.tweetId} style={{ color: "black" }}>
-                            <h2>{t.tweet}</h2>
-                            {/* <p><Link to={/tweets}>{username}></Link>, {DateTime(t.createdAt)}</p> */}
-                            {/* <button onClick={() => deleteTweet(t.tweetId)}>
-                              Delete
-                            </button> */}
+                          <div key={t.Id} style={{ color: "white" }}>
+                            <div className="themPosts">
+                              <div className="themData">
+                                <div className="tImage">
+                                  <img
+                                    key={id}
+                                    src={img}
+                                    className="rounded-image"
+                                  ></img>
+                                  <h6
+                                    key={id}
+                                    className="tweetOwner"
+                                  >
+                                    {firstName}{" "}
+                                    {lastName}
+                                    <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
+                                    <p key={id}>
+                                      <Link
+                                        style={{
+                                          textDecoration: "none",
+                                          color: "white",
+                                        }}
+                                        to={`/profile/${t.Id}`}
+                                      >
+                                        {username}
+                                      </Link>{" "}
+                                      {DateTime(t.createdAt)}
+                                    </p>
+                                  </h6>
+                                </div>
+                                <div className="tweetBody">
+                                  <p>{t.title}</p>
+                                  <img
+                                    src={t.image}
+                                    height="auto"
+                                    width="520px"
+                                    style={{ borderRadius: "8px" }}
+                                  ></img>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         );
                       }
-
-                      return null; // If no matching user is found for the tweet
+                      return null;
                     })}
                   </div>
                 </div>

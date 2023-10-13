@@ -67,7 +67,7 @@ const HomePage = () => {
 
   const handleLogout = () => {
     signOutUser();
-    navigate("/login");
+    navigate("/");
   };
   return (
     <>
@@ -262,7 +262,7 @@ const HomePage = () => {
                               );
                               if (matchingUser) {
                                 return (
-                                  <div className="themPosts">
+                                  <div  className="themPosts">
                                     <div className="themData">
                                       <div className="tImage">
                                         <img
