@@ -1,9 +1,8 @@
-
 .box {
     max-width: 250px;
     display: grid;
     place-items: center; 
-    background-color: black;
+    /* background-color: black; */
 }
 
 .log {
@@ -40,6 +39,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    background-color: black;
 }
 
 .userProfile {
@@ -63,10 +63,10 @@
     font-weight: lighter;
 }
 
-.pMenu {
+/* .pMenu {
     margin-top: 10px;
     margin-left: 20px;
-}
+} */
 
 
 

@@ -13,6 +13,8 @@ export const UserProvider = (props) => {
         fetchData();
       }, []);
 
+      let token = localStorage.getItem("mytweeterToken");
+
     function createUser(username, password, firstName, lastName, img, bio) {       
         let user = { username, password, firstName, lastName, img, bio};
         
@@ -48,9 +50,31 @@ export const UserProvider = (props) => {
         })
     }
 
+    function CurrentLogin(myToken) {
+        return new Promise((resolve, reject) => {
+           
+            if (token && token === myToken) {
+                const headers = {
+                    Authorization: `Bearer ${token}`,
+                };
+                axios
+                    .get(baseUrl + 'currentLogin', { headers })
+                    .then((response) => {
+                        resolve(response.data);
+                    })
+                    .catch((error) => {
+                        reject(error);
+                    });
+            } else {
+                reject("User not authenticated");
+            }
+ });
+}
+
     return (
         <UserContext.Provider value={{
             user,
+            CurrentLogin,
             getAllUsers,
             getUser,
             createUser,

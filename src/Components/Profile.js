@@ -1,7 +1,7 @@
 import react, { useContext, useEffect, useState } from "react";
 import TweetContext from "../Contexts/TweetContext";
 import UserContext from "../Contexts/UserContext";
-import { Container, Row, Col, Stack } from "react-bootstrap";
+import { Container, Row, Col, Stack, Button } from "react-bootstrap";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -21,7 +21,9 @@ import "../Styles/Profile.css";
 function Profile() {
   const { tweet, deleteTweet } = useContext(TweetContext);
 
-  const { getUser, signOutUser } = useContext(UserContext);
+  const { getUser, signOutUser, CurrentLogin } = useContext(UserContext);
+
+  const [ getCurrentLogin, setCurrentLogin ] = useState();
 
   let params = useParams();
 
@@ -73,6 +75,10 @@ function Profile() {
     async function fetch() {
       await getUser(id).then((userProfile) => setUserProfile(userProfile));
     }
+    CurrentLogin(token).then((user) => {
+      setCurrentLogin(user);
+  });
+
     fetch();
   }, []);
 
@@ -276,6 +282,14 @@ function Profile() {
                                     style={{ borderRadius: "8px" }}
                                   ></img>
                                 </div>
+                               <div>
+                                {getCurrentLogin && getCurrentLogin.userId === userProfile.userId && (
+                                  <div>
+                                  <Button variant="outline-danger">Delete</Button>
+                                  <Link className="btn btn-outline-primary" to={`/edit/${getCurrentLogin.userId}`}>Edit</Link>
+                                  </div>
+                                )}
+                               </div>
                               </div>
                             </div>
                           </div>

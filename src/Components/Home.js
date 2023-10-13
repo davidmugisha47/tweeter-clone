@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TweetContext from "../Contexts/TweetContext";
 import { Container, Row, Col, Stack } from "react-bootstrap";
@@ -24,11 +24,25 @@ import UserContext from "../Contexts/UserContext";
 import LoginOutlined from "@mui/icons-material/LoginOutlined";
 
 const HomePage = () => {
-  const { signOutUser, user } = useContext(UserContext);
+  const { signOutUser, user, CurrentLogin, getAllUsers } =
+    useContext(UserContext);
 
-  const { tweet, addTweet } = useContext(TweetContext);
+  const { tweet, addTweet, getAllTweets } = useContext(TweetContext);
 
   const [newTweet, setNewTweet] = useState({ title: "", image: "" });
+  const [loggedInUser, setLoggedInUser] = useState("");
+  const token = localStorage.getItem("mytweeterToken");
+
+  useEffect(() => {
+    if (token) {
+      CurrentLogin(token)
+        .then((user) => setLoggedInUser(user))
+        .catch((error) => {
+          console.log(error);
+        });
+      getAllUsers();
+    }
+  }, []);
 
   const DateTime = (dataTime) => {
     const options = {
@@ -53,6 +67,7 @@ const HomePage = () => {
     event.preventDefault();
     addTweet(newTweet)
       .then(() => {
+        getAllTweets()
         navigate("/twitter");
       })
       .catch((err) => {
@@ -60,15 +75,34 @@ const HomePage = () => {
         navigate("/login");
       });
   };
-
-  let token = localStorage.getItem("mytweeterToken");
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
     signOutUser();
     navigate("/");
   };
+  function userProfile() {
+    if (loggedInUser) {
+      return (
+        <div key={loggedInUser.id} className="loggedInUserserProfile">
+          <img
+            key={loggedInUser.id}
+            src={loggedInUser.img}
+            className="rounded-image"
+          ></img>
+          <div className="userName">
+            <h6 key={loggedInUser.id}>
+              {loggedInUser.firstName} {loggedInUser.lastName}
+            </h6>
+            <p key={loggedInUser.id}>{loggedInUser.username}</p>
+          </div>
+          <div className="pMenu">
+            <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+          </div>
+        </div>
+      );
+    }
+  }
   return (
     <>
       <div style={{ backgroundColor: "black" }}>
@@ -119,12 +153,10 @@ const HomePage = () => {
                     ></img>
                     <p>Premium</p>
                   </div>
-                  {token && (
-                    <div className="profile">
-                      <PersonOutlineIcon fontSize="large"></PersonOutlineIcon>
-                      <a href="profile">Profile</a>
-                    </div>
-                  )}
+                  <div key={loggedInUser.userId} className="profile">
+                    <PersonOutlineIcon fontSize="large"></PersonOutlineIcon>
+                    <Link to={`/profile/${loggedInUser.userId}`}>Profile</Link>
+                  </div>
                   {token ? (
                     <div className="signOut">
                       <LogoutOutlinedIcon fontSize="large"></LogoutOutlinedIcon>
@@ -143,40 +175,22 @@ const HomePage = () => {
                       <a href="login">Post</a>
                     </button>
                   </div>
-                  {token && (
-                    <div>
-                      <UserContext.Consumer>
-                        {({ user }) => {
-                          return (
-                            <div>
-                              <div>
-                                {user.map((u) => {
-                                  return (
-                                    <div key={u.id} className="userProfile">
-                                      <img
-                                        key={u.id}
-                                        src={u.img}
-                                        className="rounded-image"
-                                      ></img>
-                                      <div className="userName">
-                                        <h6 key={u.id}>
-                                          {u.firstName} {u.lastName}
-                                        </h6>
-                                        <p key={u.id}>{u.username}</p>
-                                      </div>
-                                      <div className="pMenu">
-                                        <MoreHorizIcon fontSize="small"></MoreHorizIcon>
-                                      </div>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          );
-                        }}
-                      </UserContext.Consumer>
+                  <div key={loggedInUser.id} className="userProfile">
+                    <img
+                      key={loggedInUser.id}
+                      src={loggedInUser.img}
+                      className="rounded-image"
+                    ></img>
+                    <div className="userName">
+                      <h6 key={loggedInUser.id}>
+                        {loggedInUser.firstName} {loggedInUser.lastName}
+                      </h6>
+                      <p key={loggedInUser.id}>{loggedInUser.username}</p>
                     </div>
-                  )}
+                    <div className="pMenu">
+                      <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                    </div>
+                  </div>
                 </div>
               </Stack>
             </Col>
@@ -195,7 +209,7 @@ const HomePage = () => {
                       <div className="what">
                         <div className="tImage">
                           <img
-                            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            src={loggedInUser.img}
                             className="rounded-image"
                           ></img>
                         </div>
@@ -254,7 +268,7 @@ const HomePage = () => {
                     {({ tweet }) => {
                       return (
                         <div>
-                          {console.log(tweet)}
+                          {/* {console.log(tweet)} */}
                           <div>
                             {tweet.map((tweet) => {
                               const matchingUser = user.find(
@@ -262,7 +276,7 @@ const HomePage = () => {
                               );
                               if (matchingUser) {
                                 return (
-                                  <div  className="themPosts">
+                                  <div className="themPosts">
                                     <div className="themData">
                                       <div className="tImage">
                                         <img
