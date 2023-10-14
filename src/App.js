@@ -15,9 +15,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="twitter" element={<HomePage />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
-            <Route path="twitter" element={<HomePage />} />
             <Route path="profile/:userId" element={<Profile />} />
           </Routes>
         </BrowserRouter>

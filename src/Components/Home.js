@@ -153,10 +153,13 @@ const HomePage = () => {
                     ></img>
                     <p>Premium</p>
                   </div>
-                  <div key={loggedInUser.userId} className="profile">
+                  {token && (
+                    <div key={loggedInUser.userId} className="profile">
                     <PersonOutlineIcon fontSize="large"></PersonOutlineIcon>
                     <Link to={`/profile/${loggedInUser.userId}`}>Profile</Link>
                   </div>
+                  )}
+
                   {token ? (
                     <div className="signOut">
                       <LogoutOutlinedIcon fontSize="large"></LogoutOutlinedIcon>

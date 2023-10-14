@@ -62,6 +62,18 @@ export const TweetProvider = (props) => {
       });
   }
 
+  function getTweetsByUserId(userId) {
+    return axios
+    .get( `${baseUrl}/user/${userId}` )
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) =>{
+      console.log('We are having trouble looding the data', error);
+      throw error;
+    });
+  }
+
   return (
     <TweetContext.Provider
     value={{
@@ -70,7 +82,8 @@ export const TweetProvider = (props) => {
         getTweet,
         addTweet,
         editTweet,
-        deleteTweet
+        deleteTweet,
+        getTweetsByUserId
     }}
     >
         {props.children}

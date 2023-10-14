@@ -19,13 +19,19 @@ import { useParams, Link } from "react-router-dom";
 import "../Styles/Profile.css";
 
 function Profile() {
-  const { tweet, deleteTweet } = useContext(TweetContext);
+  const { tweet, deleteTweet, getTweetsByUserId } = useContext(TweetContext);
 
   const { getUser, signOutUser, CurrentLogin } = useContext(UserContext);
 
-  const [ getCurrentLogin, setCurrentLogin ] = useState();
+  const [getCurrentLogin, setCurrentLogin] = useState();
 
   let params = useParams();
+
+  const [tweetsByUserId, setTweetsByUserId] = useState({
+    userId: params.userId,
+  });
+
+  const token = localStorage.getItem("mytweeterToken");
 
   let navigate = useParams();
 
@@ -41,8 +47,6 @@ function Profile() {
 
     return new Date(dataTime).toLocaleString(undefined, options);
   };
-
-  let token = localStorage.getItem("mytweeterToken");
 
   const handleLogout = () => {
     signOutUser();
@@ -77,8 +81,10 @@ function Profile() {
     }
     CurrentLogin(token).then((user) => {
       setCurrentLogin(user);
-  });
-
+    });
+    getTweetsByUserId(tweetsByUserId.userId).then((tweet) => {
+      setTweetsByUserId(tweet);
+    });
     fetch();
   }, []);
 
@@ -252,12 +258,8 @@ function Profile() {
                                     src={img}
                                     className="rounded-image"
                                   ></img>
-                                  <h6
-                                    key={id}
-                                    className="tweetOwner"
-                                  >
-                                    {firstName}{" "}
-                                    {lastName}
+                                  <h6 key={id} className="tweetOwner">
+                                    {firstName} {lastName}
                                     <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
                                     <p key={id}>
                                       <Link
@@ -282,14 +284,23 @@ function Profile() {
                                     style={{ borderRadius: "8px" }}
                                   ></img>
                                 </div>
-                               <div>
-                                {getCurrentLogin && getCurrentLogin.userId === userProfile.userId && (
-                                  <div>
-                                  <Button variant="outline-danger">Delete</Button>
-                                  <Link className="btn btn-outline-primary" to={`/edit/${getCurrentLogin.userId}`}>Edit</Link>
-                                  </div>
-                                )}
-                               </div>
+                                <div>
+                                  {getCurrentLogin &&
+                                    getCurrentLogin.userId ===
+                                      userProfile.userId && (
+                                      <div className="themButtons">
+                                        <Button variant="outline-light">
+                                          Delete
+                                        </Button>
+                                        <Link
+                                          className="btn btn-outline-light"
+                                          to={`/edit/${t.tweetId}`}
+                                        >
+                                          Edit
+                                        </Link>
+                                      </div>
+                                    )}
+                                </div>
                               </div>
                             </div>
                           </div>
