@@ -42,29 +42,33 @@ export const TweetProvider = (props) => {
     };
 
     return axios
-      .put(baseUrl + tweet.id, tweet, { headers: myHeaders })
+      .put(baseUrl + tweet.tweetId, tweet, { headers: myHeaders })
       .then((response) => {
         getAllTweets();
         return new Promise((resolve) => resolve(response.data));
       });
     }
 
-    function deleteTweet(id) {
+    function deleteTweet(tweetId) {
       let myHeaders = {
         Authorization: `Bearer ${localStorage.getItem("mytweeterToken")}`,
       };
-
-    return axios
-      .delete(baseUrl + id, { headers: myHeaders })
-      .then((response) => {
-        getAllTweets();
-        return new Promise((resolve) => resolve(response.data));
-      });
-  }
+    
+      return axios
+        .delete(baseUrl + tweetId, { headers: myHeaders })
+        .then(() => {
+          getAllTweets();
+        })
+        .catch((error) => {
+          console.error("Error deleting tweet:", error);
+          throw error;
+        });
+    }
+    
 
   function getTweetsByUserId(userId) {
     return axios
-    .get( `${baseUrl}/user/${userId}` )
+    .get( `${baseUrl}user/${userId}` )
     .then((response) => {
       return response.data;
     })

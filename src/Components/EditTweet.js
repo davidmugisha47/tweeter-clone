@@ -20,7 +20,7 @@ import "../Styles/Profile.css";
 import "../Styles/EditTweet.css";
 
 function EditTweet() {
-  const { tweet, deleteTweet, getTweetsByUserId, editTweet, getTweet } =
+  const { tweet, getTweetsByUserId, editTweet, getTweet, getAllTweets } =
     useContext(TweetContext);
 
   const { getUser, signOutUser, CurrentLogin } = useContext(UserContext);
@@ -37,53 +37,21 @@ function EditTweet() {
 
   const token = localStorage.getItem("mytweeterToken");
 
-  const DateTime = (dataTime) => {
-    const options = {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    };
-
-    return new Date(dataTime).toLocaleString(undefined, options);
-  };
 
   const handleLogout = () => {
     signOutUser();
     navigate("/login");
   };
 
-  const [userProfile, setUserProfile] = useState({
-    id: params.userId,
-    username: "",
-    img: "",
-    firstName: "",
-    lastName: "",
-    bio: "",
-  });
 
   const [tweett, setTweett] = useState({
-    id: params.tweetId,
+    tweetid: params.userId,
     title: "",
     image: "",
   });
 
-  let { tweetId, title, image } = tweett;
+  let { tweetid, title, image } = tweett;
 
-  let { id, username, img, firstName, lastName, bio, createdAt } = userProfile;
-
-  // const handleDelete = () => {
-  //   deleteTweet(id)
-  //     .then(() => {
-  //       navigate("/profile");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       window.alert("We are having trouble deleting your post");
-  //     });
-  // };
 
   function handleChange(event) {
     setTweett((prevValue) => {
@@ -91,38 +59,31 @@ function EditTweet() {
     });
   }
 
+  useEffect(() => {
+    if(tweetid === undefined) return
+    async function fetch() {
+      await getTweet(tweetid).then((post) => {
+        setTweett(post)
+    })
+    }
+    fetch();
+  }, [tweetid, getTweet]);
+
+  
   function handleSubmit(event) {
     event.preventDefault();
-    editTweet(tweet)
+    editTweet(tweett)
       .then(() => {
         window.alert("Update was successful!");
-        navigate("/profile");
+        navigate(`/twitter`);
       })
       .catch((error) => {
         console.log(error);
         window.alert("Update failed!");
-        navigate("/profile");
+        navigate("/twitter");
       });
   }
 
-  useEffect(() => {
-    if(id===undefined) return
-    async function fetch() {
-      await getUser(id).then((userProfile) => setUserProfile(userProfile));
-      await getTweet(id).then((post) => {
-        setTweett(post)
-    })
-    }
-    CurrentLogin(token).then((user) => {
-      setCurrentLogin(user);
-    });
-    getTweetsByUserId(tweetsByUserId.userId).then((tweet) => {
-        setTweetsByUserId(tweet);
-    });
-    
-
-    fetch();
-  }, [id, getTweet]);
   
 
   return (
@@ -250,7 +211,7 @@ function EditTweet() {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                           <Form.Label>Title</Form.Label>
                           <Form.Control
-                          as="textarea" rows={3}
+                            as="textarea" rows={3}
                             type="text"
                             name="title"
                             value={title}
@@ -273,54 +234,6 @@ function EditTweet() {
                         </Button>
                       </Form>
                     </div>
-                  </div>
-                  <div key={id} style={{ color: "white" }}>
-                    {tweet.map((t) => {
-                      console.log(tweet.userId, userProfile.userId);
-                      if (t.userId === userProfile.userId) {
-                        return (
-                          <div key={t.Id} style={{ color: "white" }}>
-                            <div className="themPosts">
-                              <div className="themData">
-                                <div className="tImage">
-                                  <img
-                                    key={id}
-                                    src={img}
-                                    className="rounded-image"
-                                  ></img>
-                                  <h6 key={id} className="tweetOwner">
-                                    {firstName} {lastName}
-                                    <VerifiedIcon fontSize="small"></VerifiedIcon>{" "}
-                                    <p key={id}>
-                                      <Link
-                                        style={{
-                                          textDecoration: "none",
-                                          color: "white",
-                                        }}
-                                        to={`/profile/${t.Id}`}
-                                      >
-                                        {username}
-                                      </Link>{" "}
-                                      {DateTime(t.createdAt)}
-                                    </p>
-                                  </h6>
-                                </div>
-                                <div className="tweetBody">
-                                  <p>{t.title}</p>
-                                  <img
-                                    src={t.image}
-                                    height="auto"
-                                    width="520px"
-                                    style={{ borderRadius: "8px" }}
-                                  ></img>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      }
-                      return null;
-                    })}
                   </div>
                 </div>
               </Stack>

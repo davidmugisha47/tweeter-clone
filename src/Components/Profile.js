@@ -64,17 +64,6 @@ function Profile() {
 
   let { id, username, img, firstName, lastName, bio, createdAt } = userProfile;
 
-  // const handleDelete = () => {
-  //   deleteTweet(id)
-  //     .then(() => {
-  //       navigate("/profile");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       window.alert("We are having trouble deleting your post");
-  //     });
-  // };
-
   useEffect(() => {
     async function fetch() {
       await getUser(id).then((userProfile) => setUserProfile(userProfile));
@@ -88,6 +77,31 @@ function Profile() {
     fetch();
   }, []);
 
+  const handleDelete = (tweetId) => {
+    // console.log(userProfile.userId);
+    getTweetsByUserId(userProfile.userId) // Fetch the user's tweets again to ensure you have the latest data
+      .then((userTweets) => {
+        const tweetToDelete = userTweets.find(
+          (tweet) => tweet.tweetId === tweetId
+        );
+        if (tweetToDelete) {
+          // console.log(tweetToDelete);
+          return tweetToDelete;
+        } else {
+          throw new Error("Tweet not found");
+        }
+      })
+      .then((tweetToDelete) => {
+        return deleteTweet(tweetToDelete.tweetId);
+      })
+      .then(() => {
+        navigate("/twitter");
+      })
+      .catch((error) => {
+        console.log(error);
+        window.alert("Failed to delete Post");
+      });
+  };
   return (
     <>
       <div style={{ backgroundColor: "black" }}>
@@ -246,7 +260,7 @@ function Profile() {
                   </div>
                   <div key={id} style={{ color: "white" }}>
                     {tweet.map((t) => {
-                      console.log(tweet.userId, userProfile.userId);
+                      {/* console.log(t, userProfile); */}
                       if (t.userId === userProfile.userId) {
                         return (
                           <div key={t.Id} style={{ color: "white" }}>
@@ -289,12 +303,18 @@ function Profile() {
                                     getCurrentLogin.userId ===
                                       userProfile.userId && (
                                       <div className="themButtons">
-                                        <Button variant="outline-light">
+                                        <Button
+                                          onClick={() =>
+                                            handleDelete(t.tweetId)
+                                          }
+                                          variant="outline-light"
+                                        >
                                           Delete
                                         </Button>
+
                                         <Link
                                           className="btn btn-outline-light"
-                                          to={`/edit/${t.userId}`}
+                                          to={`/edit/${t.tweetId}`}
                                         >
                                           Edit
                                         </Link>
