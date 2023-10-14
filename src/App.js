@@ -7,6 +7,7 @@ import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
 import HomePage from "./Components/Home";
 import Profile from "./Components/Profile";
+import EditTweet from "./Components/EditTweet";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="profile/:userId" element={<Profile />} />
+            <Route path="edit/:userId" element={<EditTweet /> } />
           </Routes>
         </BrowserRouter>
       </TweetProvider>

@@ -60,9 +60,7 @@ export const UserProvider = (props) => {
           .catch((error) => {
             reject(error);
           });
-      } else {
-        reject("User not authenticated");
-      }
+      } else return
     });
   }
 

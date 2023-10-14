@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import TweetContext from "../Contexts/TweetContext";
 import { Container, Row, Col, Stack } from "react-bootstrap";
 import HomeIcon from "@mui/icons-material/Home";
@@ -270,8 +270,7 @@ const HomePage = () => {
                   <TweetContext.Consumer>
                     {({ tweet }) => {
                       return (
-                        <div>
-                          {/* {console.log(tweet)} */}
+                        <div> 
                           <div>
                             {tweet.map((tweet) => {
                               const matchingUser = user.find(

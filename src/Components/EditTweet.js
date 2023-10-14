@@ -1,7 +1,7 @@
 import react, { useContext, useEffect, useState } from "react";
 import TweetContext from "../Contexts/TweetContext";
 import UserContext from "../Contexts/UserContext";
-import { Container, Row, Col, Stack, Button } from "react-bootstrap";
+import { Container, Row, Col, Stack, Button, Form } from "react-bootstrap";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -17,13 +17,17 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import "../Styles/Profile.css";
+import "../Styles/EditTweet.css";
 
-function Profile() {
-  const { tweet, deleteTweet, getTweetsByUserId } = useContext(TweetContext);
+function EditTweet() {
+  const { tweet, deleteTweet, getTweetsByUserId, editTweet, getTweet } =
+    useContext(TweetContext);
 
   const { getUser, signOutUser, CurrentLogin } = useContext(UserContext);
 
   const [getCurrentLogin, setCurrentLogin] = useState();
+
+  let navigate = useNavigate();
 
   let params = useParams();
 
@@ -32,8 +36,6 @@ function Profile() {
   });
 
   const token = localStorage.getItem("mytweeterToken");
-
-  let navigate = useNavigate();
 
   const DateTime = (dataTime) => {
     const options = {
@@ -62,6 +64,14 @@ function Profile() {
     bio: "",
   });
 
+  const [tweett, setTweett] = useState({
+    id: params.tweetId,
+    title: "",
+    image: "",
+  });
+
+  let { tweetId, title, image } = tweett;
+
   let { id, username, img, firstName, lastName, bio, createdAt } = userProfile;
 
   // const handleDelete = () => {
@@ -75,18 +85,45 @@ function Profile() {
   //     });
   // };
 
+  function handleChange(event) {
+    setTweett((prevValue) => {
+      return { ...prevValue, [event.target.name]: event.target.value };
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    editTweet(tweet)
+      .then(() => {
+        window.alert("Update was successful!");
+        navigate("/profile");
+      })
+      .catch((error) => {
+        console.log(error);
+        window.alert("Update failed!");
+        navigate("/profile");
+      });
+  }
+
   useEffect(() => {
+    if(id===undefined) return
     async function fetch() {
       await getUser(id).then((userProfile) => setUserProfile(userProfile));
+      await getTweet(id).then((post) => {
+        setTweett(post)
+    })
     }
     CurrentLogin(token).then((user) => {
       setCurrentLogin(user);
     });
     getTweetsByUserId(tweetsByUserId.userId).then((tweet) => {
-      setTweetsByUserId(tweet);
+        setTweetsByUserId(tweet);
     });
+    
+
     fetch();
-  }, []);
+  }, [id, getTweet]);
+  
 
   return (
     <>
@@ -204,44 +241,37 @@ function Profile() {
                 <div className="middle-container">
                   <div className="headingContainer">
                     <ArrowBackIcon></ArrowBackIcon>
-                    <h4>
-                      {firstName} {lastName}
-                    </h4>
+                    <h4>Edit tweet</h4>
                   </div>
                   <div style={{ marginTop: "79px" }}></div>
-                  <div className="space">
-                    <div className="nothing">
-                      <img className="crazy" src={img}></img>
-                    </div>
-                    <button className="editButton">Edit profile</button>
-                    <div className="christian">
-                      <h6>
-                        {firstName} {lastName}
-                      </h6>
-                      <p>{username}</p>
-                      <p>{bio}</p>
-                      <p>
-                        <DateRangeIcon fontSize="small"></DateRangeIcon> Joined
-                        at {DateTime(createdAt)}
-                      </p>
-                      <div className="followingNum">
-                        <p>0Following</p>
-                        <p>Following0</p>
-                      </div>
-                      <div className="Links">
-                        <p
-                          style={{
-                            borderBottom: "4px solid rgb(16, 143, 255)",
-                            borderRadius: "2px",
-                          }}
-                        >
-                          Posts
-                        </p>
-                        <p>Replies</p>
-                        <p>Highlights</p>
-                        <p>Media</p>
-                        <p>Likes</p>
-                      </div>
+                  <div className="justSomeSpace">
+                    <div className="form">
+                      <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Label>Title</Form.Label>
+                          <Form.Control
+                          as="textarea" rows={3}
+                            type="text"
+                            name="title"
+                            value={title}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Label>Image</Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="image"
+                            value={image}
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+
+                        <Button variant="primary" type="submit">
+                          Save
+                        </Button>
+                      </Form>
                     </div>
                   </div>
                   <div key={id} style={{ color: "white" }}>
@@ -283,23 +313,6 @@ function Profile() {
                                     width="520px"
                                     style={{ borderRadius: "8px" }}
                                   ></img>
-                                </div>
-                                <div>
-                                  {getCurrentLogin &&
-                                    getCurrentLogin.userId ===
-                                      userProfile.userId && (
-                                      <div className="themButtons">
-                                        <Button variant="outline-light">
-                                          Delete
-                                        </Button>
-                                        <Link
-                                          className="btn btn-outline-light"
-                                          to={`/edit/${t.userId}`}
-                                        >
-                                          Edit
-                                        </Link>
-                                      </div>
-                                    )}
                                 </div>
                               </div>
                             </div>
@@ -374,4 +387,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default EditTweet;
