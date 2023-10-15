@@ -16,11 +16,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="twitter" element={<HomePage />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="profile/:userId" element={<Profile />} />
-            <Route path="edit/:userId" element={<EditTweet /> } />
+            <Route path="/twitter" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/profile/:userId" element={<Profile />} />
+            <Route path="/edit/:userId" element={<EditTweet /> } />
           </Routes>
         </BrowserRouter>
       </TweetProvider>

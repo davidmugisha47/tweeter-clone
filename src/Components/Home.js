@@ -100,7 +100,7 @@ const HomePage = () => {
                   </div>
                   <div className="home">
                     <HomeIcon fontSize="large"></HomeIcon>
-                    <a href="twitter">Home</a>
+                    <Link to="/twitter">Home</Link>
                   </div>
                   <div className="search">
                     <SearchIcon fontSize="large"></SearchIcon>

@@ -98,7 +98,7 @@ function EditTweet() {
                   </div>
                   <div className="home">
                     <HomeIcon fontSize="large"></HomeIcon>
-                    <a href="twitter">Home</a>
+                    <a href="/twitter">Home</a>
                   </div>
                   <div className="search">
                     <SearchIcon fontSize="large"></SearchIcon>
