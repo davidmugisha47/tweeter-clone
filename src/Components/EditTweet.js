@@ -25,6 +25,8 @@ function EditTweet() {
 
   const { getUser, signOutUser, CurrentLogin } = useContext(UserContext);
 
+  const [loggedInUser, setLoggedInUser] = useState("");
+
   const [getCurrentLogin, setCurrentLogin] = useState();
 
   let navigate = useNavigate();
@@ -161,38 +163,22 @@ function EditTweet() {
                     </button>
                   </div>
                   {token && (
-                    <div>
-                      <UserContext.Consumer>
-                        {({ user }) => {
-                          return (
-                            <div>
-                              <div>
-                                {user.map((u) => {
-                                  return (
-                                    <div key={u.id} className="userProfile">
-                                      <img
-                                        key={u.id}
-                                        src={u.img}
-                                        className="rounded-image"
-                                      ></img>
-                                      <div className="userName">
-                                        <h6 key={u.id}>
-                                          {u.firstName} {u.lastName}
-                                        </h6>
-                                        <p key={u.id}>{u.username}</p>
-                                      </div>
-                                      <div className="pMenu">
-                                        <MoreHorizIcon fontSize="small"></MoreHorizIcon>
-                                      </div>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          );
-                        }}
-                      </UserContext.Consumer>
+                    <div key={loggedInUser.id} className="userProfile">
+                    <img
+                      key={loggedInUser.id}
+                      src={loggedInUser.img}
+                      className="rounded-image"
+                    ></img>
+                    <div className="userName">
+                      <h6 key={loggedInUser.id}>
+                        {loggedInUser.firstName} {loggedInUser.lastName}
+                      </h6>
+                      <p key={loggedInUser.id}>{loggedInUser.username}</p>
                     </div>
+                    <div className="pMenu">
+                      <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                    </div>
+                  </div>
                   )}
                 </div>
               </Stack>
@@ -236,6 +222,7 @@ function EditTweet() {
                     </div>
                   </div>
                 </div>
+                <div className="Space"></div>
               </Stack>
             </Col>
             <Col md={2}>

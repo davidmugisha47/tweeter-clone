@@ -100,8 +100,8 @@ function Profile() {
       .catch((error) => {
         console.log(error);
         window.alert("Failed to delete Post");
-      });
-  };
+      });
+  };
   return (
     <>
       <div style={{ backgroundColor: "black" }}>
@@ -260,7 +260,9 @@ function Profile() {
                   </div>
                   <div key={id} style={{ color: "white" }}>
                     {tweet.map((t) => {
-                      {/* console.log(t, userProfile); */}
+                      {
+                        /* console.log(t, userProfile); */
+                      }
                       if (t.userId === userProfile.userId) {
                         return (
                           <div key={t.Id} style={{ color: "white" }}>
