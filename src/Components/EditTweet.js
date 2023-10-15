@@ -64,7 +64,7 @@ function EditTweet() {
       getAllUsers();
     }
     fetch();
-  }, [tweetid, getTweet, CurrentLogin, getAllUsers]);
+  }, []);
 
   function handleSubmit(event) {
     event.preventDefault();

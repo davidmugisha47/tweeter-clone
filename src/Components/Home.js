@@ -42,7 +42,7 @@ const HomePage = () => {
         });
       getAllUsers();
     }
-  }, []);
+  }, [token]);
 
   const DateTime = (dataTime) => {
     const options = {
@@ -64,10 +64,9 @@ const HomePage = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     addTweet(newTweet)
       .then(() => {
-        getAllTweets()
         navigate("/twitter");
       })
       .catch((err) => {
