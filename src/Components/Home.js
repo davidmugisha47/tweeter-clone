@@ -81,28 +81,7 @@ const HomePage = () => {
     signOutUser();
     navigate("/");
   };
-  function userProfile() {
-    if (loggedInUser) {
-      return (
-        <div key={loggedInUser.id} className="loggedInUserserProfile">
-          <img
-            key={loggedInUser.id}
-            src={loggedInUser.img}
-            className="rounded-image"
-          ></img>
-          <div className="userName">
-            <h6 key={loggedInUser.id}>
-              {loggedInUser.firstName} {loggedInUser.lastName}
-            </h6>
-            <p key={loggedInUser.id}>{loggedInUser.username}</p>
-          </div>
-          <div className="pMenu">
-            <MoreHorizIcon fontSize="small"></MoreHorizIcon>
-          </div>
-        </div>
-      );
-    }
-  }
+
   return (
     <>
       <div style={{ backgroundColor: "black" }}>
