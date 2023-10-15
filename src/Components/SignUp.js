@@ -28,8 +28,7 @@ const SignUp = () => {
   }
 
   return (
-    <Container >
-    //   <div className="box">
+      <div className="box" style={{ backgroundColor: "black" }}>
         <div className="cnt">
           <div className="tlogo">
             <img
@@ -39,7 +38,7 @@ const SignUp = () => {
               height="50px"
             ></img>
           </div>
-          <h2 style={{ fontFamily: "sans-serif" }}>
+          <h2 style={{ fontFamily: "sans-serif", }}>
             Join our large community
           </h2>
           <form onSubmit={handleSubmit}>
@@ -94,8 +93,7 @@ const SignUp = () => {
             </div>
           </form>
         </div>
-    //   </div>
-    </Container>
+      </div>
   );
 };
 
