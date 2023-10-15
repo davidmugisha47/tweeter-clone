@@ -1,4 +1,4 @@
-import react, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TweetContext from "../Contexts/TweetContext";
 import UserContext from "../Contexts/UserContext";
 import { Container, Row, Col, Stack, Button, Form } from "react-bootstrap";
@@ -11,40 +11,30 @@ import GroupIcon from "@mui/icons-material/Group";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import VerifiedIcon from "@mui/icons-material/Verified";
 import LoginOutlined from "@mui/icons-material/LoginOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import DateRangeIcon from "@mui/icons-material/DateRange";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "../Styles/Profile.css";
 import "../Styles/EditTweet.css";
 
 function EditTweet() {
-  const { tweet, getTweetsByUserId, editTweet, getTweet, getAllTweets } =
+  const { editTweet, getTweet} =
     useContext(TweetContext);
 
-  const { getUser, signOutUser, CurrentLogin } = useContext(UserContext);
+  const { signOutUser, CurrentLogin, getAllUsers } = useContext(UserContext);
 
   const [loggedInUser, setLoggedInUser] = useState("");
-
-  const [getCurrentLogin, setCurrentLogin] = useState();
 
   let navigate = useNavigate();
 
   let params = useParams();
 
-  const [tweetsByUserId, setTweetsByUserId] = useState({
-    userId: params.userId,
-  });
-
   const token = localStorage.getItem("mytweeterToken");
-
 
   const handleLogout = () => {
     signOutUser();
     navigate("/login");
   };
-
 
   const [tweett, setTweett] = useState({
     tweetid: params.userId,
@@ -54,7 +44,6 @@ function EditTweet() {
 
   let { tweetid, title, image } = tweett;
 
-
   function handleChange(event) {
     setTweett((prevValue) => {
       return { ...prevValue, [event.target.name]: event.target.value };
@@ -62,16 +51,21 @@ function EditTweet() {
   }
 
   useEffect(() => {
-    if(tweetid === undefined) return
+    if (tweetid === undefined) return;
     async function fetch() {
       await getTweet(tweetid).then((post) => {
-        setTweett(post)
-    })
+        setTweett(post);
+      });
+      CurrentLogin(token)
+        .then((user) => setLoggedInUser(user))
+        .catch((error) => {
+          console.log(error);
+        });
+      getAllUsers();
     }
     fetch();
-  }, [tweetid, getTweet]);
+  }, [tweetid, getTweet, CurrentLogin, getAllUsers]);
 
-  
   function handleSubmit(event) {
     event.preventDefault();
     editTweet(tweett)
@@ -85,8 +79,6 @@ function EditTweet() {
         navigate("/twitter");
       });
   }
-
-  
 
   return (
     <>
@@ -164,21 +156,21 @@ function EditTweet() {
                   </div>
                   {token && (
                     <div key={loggedInUser.id} className="userProfile">
-                    <img
-                      key={loggedInUser.id}
-                      src={loggedInUser.img}
-                      className="rounded-image"
-                    ></img>
-                    <div className="userName">
-                      <h6 key={loggedInUser.id}>
-                        {loggedInUser.firstName} {loggedInUser.lastName}
-                      </h6>
-                      <p key={loggedInUser.id}>{loggedInUser.username}</p>
+                      <img
+                        key={loggedInUser.id}
+                        src={loggedInUser.img}
+                        className="rounded-image"
+                      ></img>
+                      <div className="userName">
+                        <h6 key={loggedInUser.id}>
+                          {loggedInUser.firstName} {loggedInUser.lastName}
+                        </h6>
+                        <p key={loggedInUser.id}>{loggedInUser.username}</p>
+                      </div>
+                      <div className="pMenu">
+                        <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                      </div>
                     </div>
-                    <div className="pMenu">
-                      <MoreHorizIcon fontSize="small"></MoreHorizIcon>
-                    </div>
-                  </div>
                   )}
                 </div>
               </Stack>
@@ -197,7 +189,8 @@ function EditTweet() {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                           <Form.Label>Title</Form.Label>
                           <Form.Control
-                            as="textarea" rows={3}
+                            as="textarea"
+                            rows={3}
                             type="text"
                             name="title"
                             value={title}

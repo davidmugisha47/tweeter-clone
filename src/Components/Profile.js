@@ -21,9 +21,11 @@ import "../Styles/Profile.css";
 function Profile() {
   const { tweet, deleteTweet, getTweetsByUserId } = useContext(TweetContext);
 
-  const { getUser, signOutUser, CurrentLogin } = useContext(UserContext);
+  const { getUser, signOutUser, CurrentLogin, getAllUsers } = useContext(UserContext);
 
   const [getCurrentLogin, setCurrentLogin] = useState();
+
+  const [loggedInUser, setLoggedInUser] = useState("");
 
   let params = useParams();
 
@@ -74,6 +76,12 @@ function Profile() {
     getTweetsByUserId(tweetsByUserId.userId).then((tweet) => {
       setTweetsByUserId(tweet);
     });
+    CurrentLogin(token)
+      .then((user) => setLoggedInUser(user))
+      .catch((error) => {
+        console.log(error);
+      });
+    getAllUsers();
     fetch();
   }, []);
 
@@ -178,36 +186,22 @@ function Profile() {
                   </div>
                   {token && (
                     <div>
-                      <UserContext.Consumer>
-                        {({ user }) => {
-                          return (
-                            <div>
-                              <div>
-                                {user.map((u) => {
-                                  return (
-                                    <div key={u.id} className="userProfile">
-                                      <img
-                                        key={u.id}
-                                        src={u.img}
-                                        className="rounded-image"
-                                      ></img>
-                                      <div className="userName">
-                                        <h6 key={u.id}>
-                                          {u.firstName} {u.lastName}
-                                        </h6>
-                                        <p key={u.id}>{u.username}</p>
-                                      </div>
-                                      <div className="pMenu">
-                                        <MoreHorizIcon fontSize="small"></MoreHorizIcon>
-                                      </div>
-                                    </div>
-                                  );
-                                })}
-                              </div>
-                            </div>
-                          );
-                        }}
-                      </UserContext.Consumer>
+                      <div key={loggedInUser.id} className="userProfile">
+                        <img
+                          key={loggedInUser.id}
+                          src={loggedInUser.img}
+                          className="rounded-image"
+                        ></img>
+                        <div className="userName">
+                          <h6 key={loggedInUser.id}>
+                            {loggedInUser.firstName} {loggedInUser.lastName}
+                          </h6>
+                          <p key={loggedInUser.id}>{loggedInUser.username}</p>
+                        </div>
+                        <div className="pMenu">
+                          <MoreHorizIcon fontSize="small"></MoreHorizIcon>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
